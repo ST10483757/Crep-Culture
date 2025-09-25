@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crep Culture — Shop</title>
+  <link rel="stylesheet" href="Css/styles.css" />
+</head>
+<body class="shop-page">
+  <!-- HEADER -->
+  <header class="site-header">
+
+  <div id="mySidePanel" class="sidepanel">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="Page1.html">Home</a>
+  <a href="shop.html">Shop</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<button class="openbtn" onclick="openNav()">&#9776; </button>
+
+    <div class="actions">
+      <a href="login.html" class="icon-btn" aria-label="Account">👤</a>
+      <a href="cart.html" class="icon-btn cart-link" aria-label="Cart">
+        🛒<span id="cart-count" class="badge">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- SHOP HEADER -->
+  <section class="shop-header section">
+    <h1 class="section-title">Shop Sneakers</h1>
+    <div class="toolbar">
+      <input id="search" class="input" type="search" placeholder="Search sneakers..." />
+      <select id="sort" class="input">
+        <option value="default">Sort by</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+        <option value="name-asc">Name: A → Z</option>
+        <option value="name-desc">Name: Z → A</option>
+      </select>
+    </div>
+  </section>
+  <section>
+  <div class="view-toggle">
+  <button id="gridView" class="active">Grid</button>
+  <button id="listView">List</button>
+</div>
+</section>
+   
+    <!-- PRODUCT GRID -->
+<section class="section">
+  <div class="grid" id="shop-grid">
+
+    <!-- Product Card -->
+    <article class="shop-card">
+      <div class="shop-display">
+
+        <!-- Image Slider -->
+        <div class="shop-product-images">
+          <div class="shop-slide active">
+            <img src="images/Air Max 95 Mars Stone (1).jpeg" alt="Sneaker Image 1">
+          </div>
+          <div class="shop-slide">
+            <img src="images/Air Max 95 Mars Stone (2).jpeg" alt="Sneaker Image 2">
+          </div>
+          <div class="shop-slide">
+            <img src="images/Air Max 95 Mars Stone.jpeg" alt="Sneaker Image 3">
+          </div>
+
+          <!-- Prev/Next controls -->
+          <button class="prev" onclick="changeSlide(this, -1)">&#10094;</button>
+          <button class="next" onclick="changeSlide(this, 1)">&#10095;</button>
+        </div>
+
+      </div>
+
+      <!-- Product Info -->
+      <div class="shop-product-info">
+        <h3>Air Max 95 Mars Stone</h3>
+        <p>R3979,13</p>
+        <button class="btn">Add to Cart</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+    <div class="grid" id="shop-grid">
+      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
+      <article class="shop-card">
+        <div class="shop-display">
+  <!-- Image slider -->
+  <div class="shop-product-images">
+    <div class="shop-slide active">
+      <img src="images/A new Line-Up of the Travis Scott x Nike Air….jpeg" alt="Sneaker Image 1">
+    </div>
+    <div class="shop-slide">
+      <img src="images/Travis Scott x Nike Air Jordan 1 Low Medium Olive.jpeg" alt="Sneaker Image 2">
+    </div>
+    <div class="shop-slide">
+      <img src="images/Travis Scott x Wmns Air Jordan 1 Low OG 'Olive' Release.jpeg" alt="Sneaker Image 3">
+    </div>
+    <!-- Arrows -->
+    <button class="arrow left">&#10094;</button>
+    <button class="arrow right">&#10095;</button>
+  </div>
+
+  <!-- Description next to images -->
+  <div class="shop-product-info">
+    <h2>Travis Scott x Nike Air Jordan 1 Low OG Olive</h2>
+    <p></p>
+      <p>Released on :</p>
+    <label for="size">Select size:</label>
+    <select id="size">
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <button class="btn-primary add-to-cart">Add to Cart</button>
+  </div>
+</div>
+    <div class="grid" id="shop-grid">
+      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
+      <article class="card product">
+        <div class="product-display">
+  <!-- Image slider -->
+  <div class="product-images">
+    <div class="slide active">
+      <img src="images/" alt="Sneaker Image 1">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 2">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 3">
+    </div>
+    <!-- Arrows -->
+    <button class="arrow left">&#10094;</button>
+    <button class="arrow right">&#10095;</button>
+  </div>
+
+  <!-- Description next to images -->
+  <div class="product-info">
+    <h2></h2>
+    <p></p>
+      <p>Released on : </p>
+    <label for="size">Select size:</label>
+    <select id="size">
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <button class="btn-primary add-to-cart">Add to Cart</button>
+  </div>
+</div>
+    <div class="grid" id="shop-grid">
+      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
+      <article class="card product">
+        <div class="product-display">
+  <!-- Image slider -->
+  <div class="product-images">
+    <div class="slide active">
+      <img src="images/" alt="Sneaker Image 1">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 2">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 3">
+    </div>
+    <!-- Arrows -->
+    <button class="arrow left">&#10094;</button>
+    <button class="arrow right">&#10095;</button>
+  </div>
+
+  <!-- Description next to images -->
+  <div class="product-info">
+    <h2>Nike Air Max 95 Anatomy Neutrals</h2>
+    <p></p>
+      <p>Released on :</p>
+    <label for="size">Select size:</label>
+    <select id="size">
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <button class="btn-primary add-to-cart">Add to Cart</button>
+  </div>
+</div>
+    <div class="grid" id="shop-grid">
+      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
+      <article class="card product">
+        <div class="product-display">
+  <!-- Image slider -->
+  <div class="product-images">
+    <div class="slide active">
+      <img src="images/" alt="Sneaker Image 1">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 2">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 3">
+    </div>
+    <!-- Arrows -->
+    <button class="arrow left">&#10094;</button>
+    <button class="arrow right">&#10095;</button>
+  </div>
+
+  <!-- Description next to images -->
+  <div class="product-info">
+    <h2></h2>
+    <p></p>
+      <p>Released on : </p>
+    <label for="size">Select size:</label>
+    <select id="size">
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <button class="btn-primary add-to-cart">Add to Cart</button>
+  </div>
+</div>
+    <div class="grid" id="shop-grid">
+      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
+      <article class="card product">
+        <div class="product-display">
+  <!-- Image slider -->
+  <div class="product-images">
+    <div class="slide active">
+      <img src="images/" alt="Sneaker Image 1">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 2">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 3">
+    </div>
+    <!-- Arrows -->
+    <button class="arrow left">&#10094;</button>
+    <button class="arrow right">&#10095;</button>
+  </div>
+
+  <!-- Description next to images -->
+  <div class="product-info">
+    <h2></h2>
+    <p></p>
+      <p>Released on : </p>
+    <label for="size">Select size:</label>
+    <select id="size">
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <button class="btn-primary add-to-cart">Add to Cart</button>
+  </div>
+</div>
+    <div class="grid" id="shop-grid">
+      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
+      <article class="card product">
+        <div class="product-display">
+  <!-- Image slider -->
+  <div class="product-images">
+    <div class="slide active">
+      <img src="images/" alt="Sneaker Image 1">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 2">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 3">
+    </div>
+    <!-- Arrows -->
+    <button class="arrow left">&#10094;</button>
+    <button class="arrow right">&#10095;</button>
+  </div>
+
+  <!-- Description next to images -->
+  <div class="product-info">
+    <h2></h2>
+    <p></p>
+      <p>Released on : </p>
+    <label for="size">Select size:</label>
+    <select id="size">
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <button class="btn-primary add-to-cart">Add to Cart</button>
+  </div>
+</div>
+    <div class="grid" id="shop-grid">
+      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
+      <article class="card product">
+        <div class="product-display">
+  <!-- Image slider -->
+  <div class="product-images">
+    <div class="slide active">
+      <img src="images/" alt="Sneaker Image 1">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 2">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 3">
+    </div>
+    <!-- Arrows -->
+    <button class="arrow left">&#10094;</button>
+    <button class="arrow right">&#10095;</button>
+  </div>
+
+  <!-- Description next to images -->
+  <div class="product-info">
+    <h2></h2>
+    <p></p>
+      <p>Released on : </p>
+    <label for="size">Select size:</label>
+    <select id="size">
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <button class="btn-primary add-to-cart">Add to Cart</button>
+  </div>
+</div>
+    <div class="grid" id="shop-grid">
+      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
+      <article class="card product">
+        <div class="product-display">
+  <!-- Image slider -->
+  <div class="product-images">
+    <div class="slide active">
+      <img src="images/" alt="Sneaker Image 1">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 2">
+    </div>
+    <div class="slide">
+      <img src="images/" alt="Sneaker Image 3">
+    </div>
+    <!-- Arrows -->
+    <button class="arrow left">&#10094;</button>
+    <button class="arrow right">&#10095;</button>
+  </div>
+
+  <!-- Description next to images -->
+  <div class="product-info">
+    <h2>Nike Air Max 95 Anatomy Neutrals</h2>
+    <p></p>
+      <p>Released on :23/08/2022 </p>
+    <label for="size">Select size:</label>
+    <select id="size">
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <button class="btn-primary add-to-cart">Add to Cart</button>
+  </div>
+</div>
+        
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Crep Culture. All Rights Reserved.</p>
+  </footer>
+  <script src="shopHeaderScroll.js" defer></script>
+  <script src="Javascript/script.js" ></script>
+</body>
+</html>
