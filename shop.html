@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Crep Culture — Shop</title>
-  <link rel="stylesheet" href="Css/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop - Crep Culture</title>
+  <link rel="stylesheet" href="Css/styles.css">
 </head>
-<body class="shop-page">
+<body>
   <!-- HEADER -->
   <header class="site-header">
+    <div class="logo">
+      <h1>Crep Culture</h1>
+    </div>
 
-  <div id="mySidePanel" class="sidepanel">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="Page1.html">Home</a>
-  <a href="shop.html">Shop</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</div>
+    <!-- Burger menu -->
+    <div class="burger-btn" onclick="toggleNav(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
 
-<button class="openbtn" onclick="openNav()">&#9776; </button>
+    <!-- Side nav -->
+    <nav id="side-nav" class="side-nav">
+      <ul>
+        <li><a href="Page1.html">Home</a></li>
+        <li><a href="shop.html" class="active">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
 
-    <div class="actions">
+    <!-- Login & Cart -->
+    <div class="header-actions">
       <a href="login.html" class="icon-btn" aria-label="Account">👤</a>
       <a href="cart.html" class="icon-btn cart-link" aria-label="Cart">
         🛒<span id="cart-count" class="badge">0</span>
@@ -28,377 +39,353 @@
     </div>
   </header>
 
-  <!-- SHOP HEADER -->
-  <section class="shop-header section">
-    <h1 class="section-title">Shop Sneakers</h1>
-    <div class="toolbar">
-      <input id="search" class="input" type="search" placeholder="Search sneakers..." />
-      <select id="sort" class="input">
-        <option value="default">Sort by</option>
-        <option value="price-asc">Price: Low → High</option>
-        <option value="price-desc">Price: High → Low</option>
-        <option value="name-asc">Name: A → Z</option>
-        <option value="name-desc">Name: Z → A</option>
-      </select>
-    </div>
+  <!-- PAGE TITLE -->
+  <section class="page-title">
+    <h1>Shop Sneakers</h1>
   </section>
-  <section>
-  <div class="view-toggle">
-  <button id="gridView" class="active">Grid</button>
-  <button id="listView">List</button>
-</div>
-</section>
-   
-    <!-- PRODUCT GRID -->
-<section class="section">
-  <div class="grid" id="shop-grid">
 
-    <!-- Product Card -->
-    <article class="shop-card">
-      <div class="shop-display">
+  <!-- SEARCH & SORT -->
+  <section class="shop-filters">
+    <input type="text" id="search" placeholder="Search sneakers..." onkeyup="filterProducts()">
+    <select id="sort" onchange="sortProducts()">
+      <option value="default">Sort by</option>
+      <option value="price-asc">Price: Low → High</option>
+      <option value="price-desc">Price: High → Low</option>
+      <option value="name-asc">Name: A → Z</option>
+      <option value="name-desc">Name: Z → A</option>
+    </select>
+  </section>
 
-        <!-- Image Slider -->
-        <div class="shop-product-images">
-          <div class="shop-slide active">
-            <img src="images/Air Max 95 Mars Stone (1).jpeg" alt="Sneaker Image 1">
-          </div>
-          <div class="shop-slide">
-            <img src="images/Air Max 95 Mars Stone (2).jpeg" alt="Sneaker Image 2">
-          </div>
-          <div class="shop-slide">
-            <img src="images/Air Max 95 Mars Stone.jpeg" alt="Sneaker Image 3">
-          </div>
-
-          <!-- Prev/Next controls -->
-          <button class="prev" onclick="changeSlide(this, -1)">&#10094;</button>
-          <button class="next" onclick="changeSlide(this, 1)">&#10095;</button>
-        </div>
-
-      </div>
-
-      <!-- Product Info -->
-      <div class="shop-product-info">
-        <h3>Air Max 95 Mars Stone</h3>
-        <p>R3979,13</p>
-        <button class="btn">Add to Cart</button>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-
-    <div class="grid" id="shop-grid">
-      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
+  <!-- SHOP GRID -->
+  <main>
+    <section class="shop-grid" id="shop-grid">
+      
+      <!-- Product 1 -->
       <article class="shop-card">
-        <div class="shop-display">
-  <!-- Image slider -->
-  <div class="shop-product-images">
-    <div class="shop-slide active">
-      <img src="images/A new Line-Up of the Travis Scott x Nike Air….jpeg" alt="Sneaker Image 1">
-    </div>
-    <div class="shop-slide">
-      <img src="images/Travis Scott x Nike Air Jordan 1 Low Medium Olive.jpeg" alt="Sneaker Image 2">
-    </div>
-    <div class="shop-slide">
-      <img src="images/Travis Scott x Wmns Air Jordan 1 Low OG 'Olive' Release.jpeg" alt="Sneaker Image 3">
-    </div>
-    <!-- Arrows -->
-    <button class="arrow left">&#10094;</button>
-    <button class="arrow right">&#10095;</button>
-  </div>
+        <div class="shop-product-images">
+          <img src="images/Air Max 95 Mars Stone (1).jpeg" alt="Air Max 95 Mars Stone">
+        </div>
+        <div class="shop-product-info">
+          <h3>Air Max 95 Mars Stone</h3>
+          <p class="price">R3979,13</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
 
-  <!-- Description next to images -->
-  <div class="shop-product-info">
-    <h2>Travis Scott x Nike Air Jordan 1 Low OG Olive</h2>
-    <p></p>
-      <p>Released on :</p>
-    <label for="size">Select size:</label>
-    <select id="size">
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-    <button class="btn-primary add-to-cart">Add to Cart</button>
-  </div>
-</div>
-    <div class="grid" id="shop-grid">
-      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
-      <article class="card product">
-        <div class="product-display">
-  <!-- Image slider -->
-  <div class="product-images">
-    <div class="slide active">
-      <img src="images/" alt="Sneaker Image 1">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 2">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 3">
-    </div>
-    <!-- Arrows -->
-    <button class="arrow left">&#10094;</button>
-    <button class="arrow right">&#10095;</button>
-  </div>
+      <!-- Product 2 -->
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Travis Scott x Nike Air Jordan 1 Low Medium Olive.jpeg" alt="Travis Scott Jordan 1">
+        </div>
+        <div class="shop-product-info">
+          <h3>Travis Scott x Nike Air Jordan 1 Low OG Olive</h3>
+          <p class="release">Released on: 23/08/2022</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
 
-  <!-- Description next to images -->
-  <div class="product-info">
-    <h2></h2>
-    <p></p>
-      <p>Released on : </p>
-    <label for="size">Select size:</label>
-    <select id="size">
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-    <button class="btn-primary add-to-cart">Add to Cart</button>
-  </div>
-</div>
-    <div class="grid" id="shop-grid">
-      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
-      <article class="card product">
-        <div class="product-display">
-  <!-- Image slider -->
-  <div class="product-images">
-    <div class="slide active">
-      <img src="images/" alt="Sneaker Image 1">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 2">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 3">
-    </div>
-    <!-- Arrows -->
-    <button class="arrow left">&#10094;</button>
-    <button class="arrow right">&#10095;</button>
-  </div>
+      <!-- Product 3 -->
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Nike Air Max 1 Essential Women's Shoe.jpeg" alt="Nike Air Max">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike Air Max 1 (W)</h3>
+          <p class="price">R3599,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Nike Sb Yuto Horigome Dunk Low (size 5) (fq1180-001) Wolf Grey_iron Grey Matcha.jpeg" alt="Nike sb Dunk LOW ">
+        </div>
+        <div class="shop-product-info">
+          <h3>NIKE SB Yuto Horigome DUNK LOW</h3>
+          <p class="price">R6999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Nigel Sylvester x Air Jordan 4 RM Athletic Shoes Driveway Grey.jpeg" alt="Nigel Sylvester">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nigel Sylvester Air Jordan 4 Driveway Grey</h3>
+          <p class="price">R15999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Nike Air Max 1.jpeg" alt="Nike Air Max 1 ">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike Air Max 1 </h3>
+          <p class="price">R4999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Travis Scott's Golf Kicks Incoming! 🚀__The….jpeg" alt="Travis Scott Jordan 1 ">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike Air Jordan 1 Low x Travis Scott Golf Kicks</h3>
+          <p class="price">R4999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Nike Dunk High.jpeg" alt="Nike Dunk High Tops">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike Dunk High Tops</h3>
+          <p class="price">R4999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Air Jordan 4 Retro OG SP  A Ma Maniére While You….jpeg" alt="Nike Air Jordan 4 Retro OG">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike Air Jordan 4 Retro OG SP A Ma Maniére</h3>
+          <p class="price">R14999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/NIKE AIR MAX 95 OG BLACK _ SUNDIAL - ANTHRACITE.jpeg" alt="Nike Air Max 95 OG">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike Air Max 95 OG Black</h3>
+          <p class="price">R7999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Corteiz x Nike Air Max 95 “Honey Black”.jpeg" alt="Nike Air Max 95 Corteiz">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike Air Max 95 Corteiz Honey Black</h3>
+          <p class="price">R4999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/99872c71-aa64-4361-bdf9-2d5377dc3d66.jpeg" alt="Nike Air Max 1">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike Air Max 1 Sky Blue</h3>
+          <p class="price">R4999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/The Adidas Samba OG Preloved Red Leopard is back….jpeg" alt="Adidas Samba OG">
+        </div>
+        <div class="shop-product-info">
+          <h3>Adidas Samba OG Preloved Red Leopard</h3>
+          <p class="price">R4999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Nike nocta glide.jpeg" alt="Nike Nocta Glide">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike x Drake Nocta Glide Triple White</h3>
+          <p class="price">R8999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Yeezy 700 V3 'Azael' (2019_2022).jpeg" alt="Yeezy Boost 700">
+        </div>
+        <div class="shop-product-info">
+          <h3>Yeezy Boost 700 V3 Azael</h3>
+          <p class="price">R4999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/On Sale_ Women's Nike Air Max 1 Safari _Coconut Milk_.jpeg" alt="Nike Air Max ">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike Air Max 1 Safari Coconut</h3>
+          <p class="price">R4999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Yeezy Boost 700 Sneakers - Grey.jpeg" alt="Yeezy Boost 700">
+        </div>
+        <div class="shop-product-info">
+          <h3>Yeezy Boost 700 V3 Grey</h3>
+          <p class="price">R4999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/_NIGEL SYLVESTER - BRICK BY BRICK_.jpeg" alt="Nigel Sylvester">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike Nigel Sylvester Brick by Brick </h3>
+          <p class="price">R14999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/ADIDAS YEEZY 700 V3 ARZARETH.jpeg" alt="Yeezy Boost 700 ">
+        </div>
+        <div class="shop-product-info">
+          <h3>Yeezy Boost 700 V3 Arzareth</h3>
+          <p class="price">R4999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/2d7f746a-2bce-4a13-80fe-fdf863064237.jpeg" alt="Nike Air Jordan Retro">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike Air Jordan 4 Retro Cement</h3>
+          <p class="price">R7999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
 
-  <!-- Description next to images -->
-  <div class="product-info">
-    <h2>Nike Air Max 95 Anatomy Neutrals</h2>
-    <p></p>
-      <p>Released on :</p>
-    <label for="size">Select size:</label>
-    <select id="size">
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-    <button class="btn-primary add-to-cart">Add to Cart</button>
-  </div>
-</div>
-    <div class="grid" id="shop-grid">
-      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
-      <article class="card product">
-        <div class="product-display">
-  <!-- Image slider -->
-  <div class="product-images">
-    <div class="slide active">
-      <img src="images/" alt="Sneaker Image 1">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 2">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 3">
-    </div>
-    <!-- Arrows -->
-    <button class="arrow left">&#10094;</button>
-    <button class="arrow right">&#10095;</button>
-  </div>
+    </section>
+  </main>
 
-  <!-- Description next to images -->
-  <div class="product-info">
-    <h2></h2>
-    <p></p>
-      <p>Released on : </p>
-    <label for="size">Select size:</label>
-    <select id="size">
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-    <button class="btn-primary add-to-cart">Add to Cart</button>
-  </div>
-</div>
-    <div class="grid" id="shop-grid">
-      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
-      <article class="card product">
-        <div class="product-display">
-  <!-- Image slider -->
-  <div class="product-images">
-    <div class="slide active">
-      <img src="images/" alt="Sneaker Image 1">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 2">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 3">
-    </div>
-    <!-- Arrows -->
-    <button class="arrow left">&#10094;</button>
-    <button class="arrow right">&#10095;</button>
-  </div>
-
-  <!-- Description next to images -->
-  <div class="product-info">
-    <h2></h2>
-    <p></p>
-      <p>Released on : </p>
-    <label for="size">Select size:</label>
-    <select id="size">
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-    <button class="btn-primary add-to-cart">Add to Cart</button>
-  </div>
-</div>
-    <div class="grid" id="shop-grid">
-      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
-      <article class="card product">
-        <div class="product-display">
-  <!-- Image slider -->
-  <div class="product-images">
-    <div class="slide active">
-      <img src="images/" alt="Sneaker Image 1">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 2">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 3">
-    </div>
-    <!-- Arrows -->
-    <button class="arrow left">&#10094;</button>
-    <button class="arrow right">&#10095;</button>
-  </div>
-
-  <!-- Description next to images -->
-  <div class="product-info">
-    <h2></h2>
-    <p></p>
-      <p>Released on : </p>
-    <label for="size">Select size:</label>
-    <select id="size">
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-    <button class="btn-primary add-to-cart">Add to Cart</button>
-  </div>
-</div>
-    <div class="grid" id="shop-grid">
-      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
-      <article class="card product">
-        <div class="product-display">
-  <!-- Image slider -->
-  <div class="product-images">
-    <div class="slide active">
-      <img src="images/" alt="Sneaker Image 1">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 2">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 3">
-    </div>
-    <!-- Arrows -->
-    <button class="arrow left">&#10094;</button>
-    <button class="arrow right">&#10095;</button>
-  </div>
-
-  <!-- Description next to images -->
-  <div class="product-info">
-    <h2></h2>
-    <p></p>
-      <p>Released on : </p>
-    <label for="size">Select size:</label>
-    <select id="size">
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-    <button class="btn-primary add-to-cart">Add to Cart</button>
-  </div>
-</div>
-    <div class="grid" id="shop-grid">
-      <!-- Static cards (work even if JS fails), JS can also filter/sort these -->
-      <article class="card product">
-        <div class="product-display">
-  <!-- Image slider -->
-  <div class="product-images">
-    <div class="slide active">
-      <img src="images/" alt="Sneaker Image 1">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 2">
-    </div>
-    <div class="slide">
-      <img src="images/" alt="Sneaker Image 3">
-    </div>
-    <!-- Arrows -->
-    <button class="arrow left">&#10094;</button>
-    <button class="arrow right">&#10095;</button>
-  </div>
-
-  <!-- Description next to images -->
-  <div class="product-info">
-    <h2>Nike Air Max 95 Anatomy Neutrals</h2>
-    <p></p>
-      <p>Released on :23/08/2022 </p>
-    <label for="size">Select size:</label>
-    <select id="size">
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-    <button class="btn-primary add-to-cart">Add to Cart</button>
-  </div>
-</div>
-        
-  </section>
-
+  <!-- FOOTER -->
   <footer class="site-footer">
-    <p>&copy; 2025 Crep Culture. All Rights Reserved.</p>
+    <p>&copy; 2025 Crep Culture. All rights reserved.</p>
   </footer>
-  <script src="shopHeaderScroll.js" defer></script>
-  <script src="Javascript/script.js" ></script>
 </body>
 </html>
