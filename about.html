@@ -97,6 +97,24 @@
   <footer>
     <p>&copy; 2025 Crep Culture. All rights reserved.</p>
   </footer>
+<script>
+  let currentIndex = 0;
+  const images = document.querySelectorAll('.hero-image');
+  const totalImages = images.length;
 
+  function showNextImage() {
+    // Remove active class from current
+    images[currentIndex].classList.remove('active');
+
+    // Move to next image (loop back if at end)
+    currentIndex = (currentIndex + 1) % totalImages;
+
+    // Add active class to new image
+    images[currentIndex].classList.add('active');
+  }
+
+  // Change every 3 seconds
+  setInterval(showNextImage, 3000);
+</script>
 </body>
 </html>

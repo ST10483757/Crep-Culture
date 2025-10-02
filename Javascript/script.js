@@ -180,54 +180,24 @@ function toggleNav() {
       document.getElementById("side-nav").classList.toggle("open");
     }
 
-    // Placeholder for search function
-    function filterProducts() {
-      const input = document.getElementById("search").value.toLowerCase();
-      const products = document.querySelectorAll(".shop-card");
-      products.forEach(product => {
-        const name = product.querySelector("h3").innerText.toLowerCase();
-        product.style.display = name.includes(input) ? "block" : "none";
-      });
-    }
+    
 
-    // Placeholder for sort function
-    function sortProducts() {
-      const grid = document.getElementById("shop-grid");
-      const cards = Array.from(grid.querySelectorAll(".shop-card"));
-      const sortValue = document.getElementById("sort").value;
 
-      cards.sort((a, b) => {
-        if (sortValue === "price-asc") {
-          return parseFloat(a.querySelector(".price").innerText.replace(/[^\d,\.]/g,'').replace(',', '.')) -
-                 parseFloat(b.querySelector(".price").innerText.replace(/[^\d,\.]/g,'').replace(',', '.'));
-        } else if (sortValue === "price-desc") {
-          return parseFloat(b.querySelector(".price").innerText.replace(/[^\d,\.]/g,'').replace(',', '.')) -
-                 parseFloat(a.querySelector(".price").innerText.replace(/[^\d,\.]/g,'').replace(',', '.'));
-        } else if (sortValue === "name-asc") {
-          return a.querySelector("h3").innerText.localeCompare(b.querySelector("h3").innerText);
-        } else if (sortValue === "name-desc") {
-          return b.querySelector("h3").innerText.localeCompare(a.querySelector("h3").innerText);
-        }
-      });
-
-      // Re-append sorted cards
-      cards.forEach(card => grid.appendChild(card));
-    }
-
-    function myFunction(x) {
-  x.classList.toggle("change");
-   const nav = document.getElementById("side-nav");
-  nav.classList.toggle("open");
-}
 
 let carouselImages = document.querySelectorAll('.hero-carousel .hero-image');
     let currentIndex1 = 0;
 
     function showNextImage() {
-      carouselImages[currentIndex1].classList.remove('active');
-      currentIndex = (currentIndex1 + 1) % carouselImages.length;
-      carouselImages[currentIndex1].classList.add('active');
-    }
+  // Remove current active image
+  carouselImages[currentIndex1].classList.remove('active');
+
+  // Move to next index
+  currentIndex1 = (currentIndex1 + 1) % carouselImages.length;
+
+  // Add active class to the new image
+  carouselImages[currentIndex1].classList.add('active');
+}
+
 
     setInterval(showNextImage, 4000); // change every 4 seconds
   

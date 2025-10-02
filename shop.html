@@ -11,24 +11,22 @@
   <header class="site-header">
     <div class="logo">
       <h1>Crep Culture</h1>
-    </div>
-
-    <!-- Burger menu -->
-    <div class="burger-btn" onclick="toggleNav(this)">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </div>
-
-    <!-- Side nav -->
-    <nav id="side-nav" class="side-nav">
-      <ul>
-        <li><a href="Page1.html">Home</a></li>
-        <li><a href="shop.html" class="active">Shop</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+       <button class="cc-burger" aria-label="Open menu" aria-controls="cc-side-nav" aria-expanded="false">
+    <span class="cc-bar"></span>
+    <span class="cc-bar"></span>
+    <span class="cc-bar"></span>
+  </button>
+  
+  <!-- Side nav -->
+  <nav id="cc-side-nav" class="cc-side-nav" aria-hidden="true">
+    <ul>
+      <li><a href="Page1.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="shop.html">Shop Now</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+  <div id="cc-overlay" class="cc-overlay" aria-hidden="true"></div>
 
     <!-- Login & Cart -->
     <div class="header-actions">
@@ -38,6 +36,95 @@
       </a>
     </div>
   </header>
+  <style>
+      .cc-burger {
+  position: fixed;
+  left: 14px;
+  top: 14px;
+  z-index: 20002;
+  width: 44px;
+  height: 40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  gap:6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.cc-side-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100%;
+  background: #111;
+  color: #fff;
+  padding-top: 80px;
+  box-sizing: border-box;
+
+  /* start hidden */
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+
+  z-index: 20001;
+}
+
+/* show when open */
+.cc-side-nav.open {
+  transform: translateX(0);
+}
+.cc-side-nav a {
+  display: block;
+  color: #fff;   /* force white so it shows on dark background */
+  text-decoration: none;
+  padding: 12px 20px;
+  font-size: 18px;
+}
+.cc-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 20000;
+  display: none;
+}
+
+.cc-overlay.active {
+  display: block;
+}
+
+
+.cc-side-nav a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+.cc-burger .cc-bar {
+  display:block;
+  width:30px;
+  height:3px;
+  background:#111;
+  border-radius:2px;
+  transition: transform .32s ease, opacity .2s ease;
+}
+
+/* X animation — use nth-of-type so it always works */
+.cc-burger.open .cc-bar:nth-of-type(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.cc-burger.open .cc-bar:nth-of-type(2) {
+  opacity: 0;
+}
+.cc-burger.open .cc-bar:nth-of-type(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+  </style>
 
   <!-- PAGE TITLE -->
   <section class="page-title">
@@ -63,11 +150,17 @@
       <!-- Product 1 -->
       <article class="shop-card">
         <div class="shop-product-images">
-          <img src="images/Air Max 95 Mars Stone (1).jpeg" alt="Air Max 95 Mars Stone">
+          <img src="images/Air Max 95 Mars Stone (2).jpeg" alt="Air Max 95 Mars Stone">
         </div>
         <div class="shop-product-info">
-          <h3>Air Max 95 Mars Stone</h3>
+          <h3>Nike Air Max 95 Mars Stone</h3>
           <p class="price">R3979,13</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
           <button class="btn add-to-cart">Add to Cart</button>
         </div>
       </article>
@@ -75,11 +168,11 @@
       <!-- Product 2 -->
       <article class="shop-card">
         <div class="shop-product-images">
-          <img src="images/Travis Scott x Nike Air Jordan 1 Low Medium Olive.jpeg" alt="Travis Scott Jordan 1">
+          <img src="images/Travis Scott x Air Jordan 1 Low OG _Olive”.jpeg" alt="Travis Scott Jordan 1">
         </div>
         <div class="shop-product-info">
           <h3>Travis Scott x Nike Air Jordan 1 Low OG Olive</h3>
-          <p class="release">Released on: 23/08/2022</p>
+          <p class="price">R3599,00</p>
           <label for="size">Select size:</label>
           <select id="size">
             <option>4</option><option>5</option><option>6</option>
@@ -96,7 +189,7 @@
           <img src="images/Nike Air Max 1 Essential Women's Shoe.jpeg" alt="Nike Air Max">
         </div>
         <div class="shop-product-info">
-          <h3>Nike Air Max 1 (W)</h3>
+          <h3>Nike Air Max 1 Gray</h3>
           <p class="price">R3599,00</p>
           <label for="size">Select size:</label>
           <select id="size">
@@ -144,7 +237,7 @@
           <img src="images/Nike Air Max 1.jpeg" alt="Nike Air Max 1 ">
         </div>
         <div class="shop-product-info">
-          <h3>Nike Air Max 1 </h3>
+          <h3>Nike Air Max 1 Orange </h3>
           <p class="price">R4999,00</p>
           <label for="size">Select size:</label>
           <select id="size">
@@ -189,7 +282,7 @@
       </article>
       <article class="shop-card">
         <div class="shop-product-images">
-          <img src="images/Air Jordan 4 Retro OG SP  A Ma Maniére While You….jpeg" alt="Nike Air Jordan 4 Retro OG">
+          <img src="images/7e9c18cc-4cfb-4ede-b361-84fda64a6ac8.jpeg" alt="Nike Air Jordan 4 Retro OG">
         </div>
         <div class="shop-product-info">
           <h3>Nike Air Jordan 4 Retro OG SP A Ma Maniére</h3>
@@ -269,7 +362,7 @@
       </article>
       <article class="shop-card">
         <div class="shop-product-images">
-          <img src="images/Nike nocta glide.jpeg" alt="Nike Nocta Glide">
+          <img src="images/NOCTA Glide Triple White.jpeg" alt="Nike Nocta Glide">
         </div>
         <div class="shop-product-info">
           <h3>Nike x Drake Nocta Glide Triple White</h3>
@@ -301,7 +394,7 @@
       </article>
       <article class="shop-card">
         <div class="shop-product-images">
-          <img src="images/On Sale_ Women's Nike Air Max 1 Safari _Coconut Milk_.jpeg" alt="Nike Air Max ">
+          <img src="images/Sneakers Nike Women's Air Max 1 87 Safari _Coconut Milk_ Beige Size 5_5.jpeg" alt="Nike Air Max ">
         </div>
         <div class="shop-product-info">
           <h3>Nike Air Max 1 Safari Coconut</h3>
@@ -333,7 +426,7 @@
       </article>
       <article class="shop-card">
         <div class="shop-product-images">
-          <img src="images/_NIGEL SYLVESTER - BRICK BY BRICK_.jpeg" alt="Nigel Sylvester">
+          <img src="images/Air Jordan 4 Retro Og Sp Nigel Sylvester Brick By Brick 36.jpeg" alt="Nigel Sylvester">
         </div>
         <div class="shop-product-info">
           <h3>Nike Nigel Sylvester Brick by Brick </h3>
@@ -365,6 +458,22 @@
       </article>
       <article class="shop-card">
         <div class="shop-product-images">
+          <img src="images/59fd2325-75af-43e0-bfd7-3b4cc3f64bcb.jpeg" alt="Nike Dunk">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike Dunk Green</h3>
+          <p class="price">R3999,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
           <img src="images/2d7f746a-2bce-4a13-80fe-fdf863064237.jpeg" alt="Nike Air Jordan Retro">
         </div>
         <div class="shop-product-info">
@@ -379,7 +488,54 @@
           <button class="btn add-to-cart">Add to Cart</button>
         </div>
       </article>
-
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Nuova Air Jordan 1 Retro Low OG SP Travis Scott….jpeg" alt="Nike Air Jordan 1">
+        </div>
+        <div class="shop-product-info">
+          <h3>Travis Scott Nuova Air Jordan 1 Retro Low OG SP</h3>
+          <p class="price">R12509,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/a239be4f-a778-416f-9f40-7ebcc68fe480.jpeg" alt="Nike Jordan">
+        </div>
+        <div class="shop-product-info">
+          <h3>Jordan</h3>
+          <p class="price">R7000,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
+      <article class="shop-card">
+        <div class="shop-product-images">
+          <img src="images/Air Jordan 4 Retro x Off-White Sail.jpeg" alt="Air Jordan 4 Retro">
+        </div>
+        <div class="shop-product-info">
+          <h3>Nike Air Jordan 4 Retro x Off-White Sail</h3>
+          <p class="price">R10000,00</p>
+          <label for="size">Select size:</label>
+          <select id="size">
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8</option><option>9</option>
+            <option>10</option>
+          </select>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </article>
     </section>
   </main>
 
@@ -387,5 +543,57 @@
   <footer class="site-footer">
     <p>&copy; 2025 Crep Culture. All rights reserved.</p>
   </footer>
+
+  <script>
+      (function(){
+    const burger = document.querySelector('.cc-burger');
+    const nav = document.getElementById('cc-side-nav');
+    const overlay = document.getElementById('cc-overlay');
+
+    if(!burger || !nav || !overlay){
+      console.error('Missing burger/nav/overlay elements (check IDs/classes).');
+      return;
+    }
+
+    function openNav(){
+      burger.classList.add('open');
+      nav.classList.add('open');
+      overlay.classList.add('active');
+      burger.setAttribute('aria-expanded','true');
+      nav.setAttribute('aria-hidden','false');
+      overlay.setAttribute('aria-hidden','false');
+    }
+    function closeNav(){
+      burger.classList.remove('open');
+      nav.classList.remove('open');
+      overlay.classList.remove('active');
+      burger.setAttribute('aria-expanded','false');
+      nav.setAttribute('aria-hidden','true');
+      overlay.setAttribute('aria-hidden','true');
+    }
+    function toggleNav(){
+      if(nav.classList.contains('open')) closeNav();
+      else openNav();
+    }
+
+    // click burger
+    burger.addEventListener('click', toggleNav);
+
+    // click overlay
+    overlay.addEventListener('click', closeNav);
+
+    // close when any nav link clicked
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+    // keyboard: Esc closes, Enter/Space toggles burger when focused
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') closeNav();
+      if((e.key === 'Enter' || e.key === ' ') && document.activeElement === burger){
+        e.preventDefault(); toggleNav();
+      }
+    });
+  })();
+</script>
+
 </body>
 </html>
