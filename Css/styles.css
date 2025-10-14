@@ -26,6 +26,7 @@ header {
 
 .logo {
   font-weight: bold;
+  color: whitesmoke;
   font-size: 1.5rem;
 }
 nav a {
@@ -56,6 +57,7 @@ nav a.active {
   background-size: cover;
   background-position: center;
   opacity: 0;
+   z-index: 0;
   transition: opacity 0.7s ease-in-out;
 }
 
@@ -187,7 +189,9 @@ nav a.active {
 }
 .featured h2 {
   text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-bottom: 20px;
+
 }
 .product-grid {
   display: grid;
@@ -202,19 +206,266 @@ nav a.active {
 .product-card img {
   max-width: 100%;
   height: auto;
+  
 }
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+.product-track {
+  display: flex;
+  gap: 1rem;
+}
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.carousel {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+.arrow {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
 .price {
   font-weight: bold;
   margin: 10px 0;
 }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-content img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Masonry Gallery Styling */
+.masonry-gallery {
+  padding: 40px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.masonry-gallery h2 {
+  font-size: 2rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #222;
+}
+
+.grid {
+  column-count: 3;
+  column-gap: 20px;
+}
+
+.grid-item {
+  position: relative;
+  break-inside: avoid;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.grid-item img,
+.grid-item video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover img,
+.grid-item:hover video {
+  transform: scale(1.03);
+}
+
+.captionForVideoAndImages {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 10px;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.grid-item:hover .captionForVideoAndImages {
+  opacity: 1;
+}
 
 /* FOOTER */
-footer {
-  background: #f8f8f8;
-  text-align: center;
-  padding: 15px;
-  font-size: 0.9rem;
+.footer {
+  background-color: #0a0a0a;
+  color: #ccc;
+  padding: 60px 40px 20px;
+  font-family: 'Poppins', sans-serif;
 }
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1 1 250px;
+  min-width: 220px;
+}
+
+.footer h3 {
+  color: #fff;
+  font-size: 22px;
+  margin-bottom: 22px;
+}
+
+.footer h4 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 22px;
+}
+
+.footer p {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer ul li {
+  margin-bottom: 20px;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #fff;
+}
+
+/* Newsletter form */
+.footer form {
+  display: flex;
+  border: 1px solid #333;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.footer input[type="email"] {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.footer button {
+  background: #333;
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.footer button:hover {
+  background: #555;
+}
+
+/* Social + copyright bar */
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #222;
+  margin-top: 50px;
+  padding-top: 15px;
+  font-size: 13px;
+  color: #777;
+}
+
+.social-icons {
+  margin-bottom: 8px;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  color: #ccc;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #fff;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-column {
+    margin-bottom: 30px;
+  }
+}
+
 
 
 /* Toggle buttons styling */
@@ -240,23 +491,42 @@ footer {
 .product{
   transition: all 0.4s ease-in-out;
 }
- /*This is for the about */
+ /*This is for the about*/
+.wave-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-top {
+  display: block;
+  width: 100%;
+  transform: rotate(180deg); /* flips the wave vertically */
+}
+.wave path {
+  animation: waveMotion 8s ease-in-out infinite;
+}
+
+@keyframes waveMotion {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
 .about-section {
-  background-color: #f9f9f9;
-  padding: 100px 20px 60px;
+  background-color: #0a0a0a;
+  color: whitesmoke;
+  padding: 80px 20px;
+  text-align: center;
   position: relative;
-  overflow: hidden;
-}
-
-/* Wavy animated top */
-.wavy-border svg path {
-  animation: waveMove 8s linear infinite;
-}
-
-@keyframes waveMove {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  z-index: 1;
 }
 
 /* Cards Container */
@@ -290,7 +560,7 @@ footer {
 
 /* Headings */
 .about-content h2 {
-  color: #38242a;
+  color: beige;
   font-size: 2rem;
   margin-bottom: 15px;
 }
@@ -320,7 +590,7 @@ footer {
 
 .about-content .newsletter-card button {
   padding: 12px 25px;
-  background-color: #3a242b;
+  background-color: whitesmoke;
   color: #fff;
   border: none;
   border-radius: 5px;

@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crep Culture</title>
   <link rel="stylesheet" href="Css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ 
 </head>
 <body>
 
@@ -30,7 +33,7 @@
 <!-- HERO SLIDER -->
 <section class="hero">
   <!-- Slide 1 -->
-  <div class="slide" style="background-image: url('images/Cop\ or\ Drop_\ 🔥Follow\ Us\ @theirdrip\ For\ More….jpeg');">
+  <div class="slide" style="background-image: url('images/Jordan Retro 4 A Ma Maniere.jpeg');">
     <div class="caption">
       <h1>Step Into Style</h1>
       <p>Fresh sneakers. Exclusive drops. Delivered to your door.</p>
@@ -39,7 +42,7 @@
   </div>
 
   <!-- Slide 2 -->
-  <div class="slide" style="background-image: url('images/Top\ 5\ Nike\ Dunks.jpeg');">
+  <div class="slide" style="background-image: url('images/Nike Dunks brown and cream white.jpeg');">
     <div class="caption">
       <h1>Exclusive Sneakers</h1>
       <p>Be the first to grab the latest jordan releases from us .</p>
@@ -48,7 +51,7 @@
   </div>
 
   <!-- Slide 3 -->
-      <div class="slide" style="background-image: url('images/Jordan\ Men\'s\ Sneakers.jpeg');">
+      <div class="slide" style="background-image: url('images/Jordans.jpeg');">
     <div class="caption">
       <h1>Comfort Meets Style</h1>
       <p>Your perfect pair awaits.</p>
@@ -66,20 +69,34 @@
     <span class="dot"></span>
   </div>
 </section>
+<!-- Product Modal -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImage" src="images/_NIGEL SYLVESTER - BRICK BY BRICK_.jpeg" alt="Product Image">
+    <h3 id="modalTitle">Nike Jordan 4 Nigel SYLVESTER</h3>
+    <p id="modalPrice">R15000.00</p>
+    <p id="modalDescription">More product details go here...</p>
+    <button class="btn-primary">Add to Cart</button>
+  </div>
+</div>
+
 
 
   <!-- FEATURED PRODUCTS -->
   <section class="featured">
     <h2>Featured Sneakers</h2>
+
+    <div class="carousel-container">
+    <button class="arrow left" onclick="scrollLeft()">&#10094;</button>
+
+    <div class="carousel">
     <div class="product-grid">
       <div class="product-card">
-        <img src="images/_NIGEL SYLVESTER - BRICK BY BRICK_.jpeg" alt="Jordan">
+        <img src="images/Jordan x Nigel Sylvester Brick by Brick (Nike).jpeg" onclick="openModal('images/', 'Nike Jordan 4 Nigel SYLVESTER', 'R15500,00')">>
         <h3>Nike Jordan 4 Nigel SYLVESTER</h3>
         <p class="price">R15500,00</p> Brick by brick
-        <button class="btn-primary add-to-cart">Add to Cart</button>
-      </div>
-      <div class="product-card">
-        <img src="images/🌿 _ Corteiz X Nike Air Max 95 _SEQUOIA_….jpeg" alt="Nike Air Max">
+        <button class="btn-primary add-to-cart">Add to Cart</button>NM
         <h3>Nike X Corteiz Air Max 95</h3>
         <p class="price">R10999,00</p>
         <button class="btn-primary add-to-cart">Add to Cart</button>
@@ -90,44 +107,106 @@
         <p class="price">R3499,00</p>
         <button class="btn-primary add-to-cart">Add to Cart</button>
       </div>
+      <div class="product-card">
+        <img src="images/" alt="">
+        <h3></h3>
+        <p class="price">R3499,00</p>
+        <button class="btn-primary add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="images/" alt="">
+        <h3></h3>
+        <p class="price">R3499,00</p>
+        <button class="btn-primary add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="images/" alt="">
+        <h3></h3>
+        <p class="price">R3499,00</p>
+        <button class="btn-primary add-to-cart">Add to Cart</button>
+      </div>
     </div>
+    <button class="arrow right" onclick="scrollRight()">&#10095;</button>
   </section>
+  <!-- Pinterest-Style Gallery Section -->
+<section class="masonry-gallery">
+  <h2>Gallery: Unseen Moments</h2>
+  <div class="grid">
+    <!-- Images -->
+    <div class="grid-item"><img src="images/fashionModel.jpeg" alt="Streetwear"></div>
+    <div class="grid-item"><img src="images/Cool.jpeg" alt="Nike release"></div>
+    <div class="grid-item"><img src="images/SneakerHead.jpeg" alt="Streetwear"></div>
+    <div class="grid-item"><img src="images/Adidas Samba.mp4.jpeg" alt="Nike release"></div>
 
-  <!-- About Section -->
-<section class="about-section">
-  <div class="wavy-border"></div>
-  <div class="about-content">
-    <div class="about">
-      <h2>About Us</h2>
-      <p>Welcome to our sneaker store! We bring you the latest, most stylish, and exclusive sneakers.</p>
+    <!-- Videos -->
+     <div class="grid-item">
+      <video controls>
+        <source src="images/Video1.mp4" type="video/mp4">
+        <div class="captionForVideoAndImages">Lookbook</div>
+      </video>
     </div>
-
-    <div class="newsletter">
-      <h2>Newsletter</h2>
-      <p>Sign up to get the latest updates, drops, and exclusive offers.</p>
-      <form>
-        <input type="email" placeholder="Enter your email" required>
-        <button type="submit">Subscribe</button>
-      </form>
-    </div>
-
-    <div class="get-help">
-      <h2>Get Help</h2>
-      <ul>
-        <li><a href="#">FAQs(coming soon)</a></li>
-        <li><a href="Contact.html">Contact Us</a></li>
-        <li><a href="#">Track Order(coming soon)</a></li>
-        <li><a href="#">Returns(coming soon)</a></li>
-      </ul>
+    <div class="grid-item">
+      <video controls>
+        <source src="images/Video2.mp4" type="video/mp4">
+        <div class="captionForVideoAndImages">Lookbook</div>
+      </video>
     </div>
   </div>
 </section>
+<!-- About Section -->
+<div class="wave-wrapper">
+  <svg class="wave-top" viewBox="0 0 1440 320">
+    <path fill="#0a0a0a" fill-opacity="1" d="M0,160L60,165.3C120,171,240,181,360,186.7C480,192,600,192,720,186.7C840,181,960,171,1080,165.3C1200,160,1320,160,1380,160L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+  </svg>
 
   <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 Crep Culture. All Rights Reserved.</p>
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <div class="footer-column">
+        <h3>Crep Culture</h3>
+        <p>Your plug for premium and authentic sneakers. Our mission is to redefine sneaker culture with style, exclusivity, and confidence.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Main Menu</h4>
+        <ul>
+          <li><a href="Page1.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Get Help</h4>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Newsletter</h4>
+        <p>Stay up to date with drops and exclusive releases.</p>
+        <form>
+          <input type="email" placeholder="Your email">
+          <button type="submit">→</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="social-icons">
+        <a href="https://www.tiktok.com/buhleeee_" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/buhleeeeee.m" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p>© 2025 Crep Culture. All rights reserved.</p>
+    </div>
   </footer>
+</div>
 
   <script src="Javascript/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 </body>
 </html>

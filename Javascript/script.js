@@ -13,78 +13,75 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
   });
 });
 
-// -------------------------
 // HERO SLIDER + DOTS
-// -------------------------
-const slides = document.querySelectorAll(".slide");
-const prevBtn = document.querySelector(".arrow.left");
-const nextBtn = document.querySelector(".arrow.right");
-const dotsContainer = document.querySelector(".dots");
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".slide");
+  const prevBtn = document.querySelector(".arrow.left");
+  const nextBtn = document.querySelector(".arrow.right");
+  const dotsContainer = document.querySelector(".dots");
 
-let currentIndex = 0;
-let slideInterval;
+  let currentIndex = 0;
+  let slideInterval;
 
-// Generate dots dynamically
-slides.forEach((_, i) => {
-  const dot = document.createElement("span");
-  if (i === 0) dot.classList.add("active");
-  dotsContainer.appendChild(dot);
-});
-
-const dots = document.querySelectorAll(".dots span");
-
-// Show a specific slide
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
-    dots[i].classList.toggle("active", i === index);
+  // Create dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement("span");
+    if (i === 0) dot.classList.add("active");
+    dotsContainer.appendChild(dot);
   });
-  currentIndex = index;
-}
 
-// Next + Prev controls
-function nextSlide() {
-  showSlide((currentIndex + 1) % slides.length);
-}
+  const dots = document.querySelectorAll(".dots span");
 
-function prevSlide() {
-  showSlide((currentIndex - 1 + slides.length) % slides.length);
-}
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active");
+      dots[i].classList.remove("active");
+    });
 
-// Auto-rotate every 5s
-function startAutoSlide() {
-  slideInterval = setInterval(nextSlide, 5000);
-}
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+    currentIndex = index;
+  }
 
-function stopAutoSlide() {
-  clearInterval(slideInterval);
-}
+  function nextSlide() {
+    let nextIndex = (currentIndex + 1) % slides.length;
+    showSlide(nextIndex);
+  }
 
-// Arrow Event Listeners
-nextBtn.addEventListener("click", () => {
-  nextSlide();
-  stopAutoSlide();
-  startAutoSlide();
-});
+  function prevSlide() {
+    let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(prevIndex);
+  }
 
-prevBtn.addEventListener("click", () => {
-  prevSlide();
-  stopAutoSlide();
-  startAutoSlide();
-});
+  function startAutoSlide() {
+    slideInterval = setInterval(nextSlide, 5000);
+  }
 
-// Dot click Event Listeners
-dots.forEach((dot, i) => {
-  dot.addEventListener("click", () => {
-    showSlide(i);
-    stopAutoSlide();
+  function resetAutoSlide() {
+    clearInterval(slideInterval);
     startAutoSlide();
-  });
-});
+  }
 
-// Init slider
-showSlide(currentIndex);
-startAutoSlide();
+  nextBtn.addEventListener("click", () => {
+    nextSlide();
+    resetAutoSlide();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    prevSlide();
+    resetAutoSlide();
+  });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      showSlide(i);
+      resetAutoSlide();
+    });
+  });
+
+  showSlide(currentIndex);
+  startAutoSlide();
+});
 
 // -------------------------
 // SIDE PANEL NAV
@@ -96,6 +93,19 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidePanel").style.width = "0"; 
 }
+
+
+  // Scroll animation for About section
+  window.addEventListener('scroll', function () {
+    const aboutSection = document.querySelector('.about-section');
+    const position = aboutSection.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight / 1.3;
+
+    if (position < screenHeight) {
+      aboutSection.classList.add('show');
+    }
+  });
+
 
 const gridBtn = document.getElementById("gridView");
 const listBtn = document.getElementById("listView");
@@ -114,31 +124,6 @@ listBtn.addEventListener("click", () => {
   listBtn.classList.add("active");
   gridBtn.classList.remove("active");
 });
-
-// shopHeaderScroll.js
-const shopHeader = document.querySelector('.shop-header');
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) { // adjust distance
-    shopHeader.style.background = '#fff';
-    shopHeader.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
-  } else {
-    shopHeader.style.background = 'transparent';
-    shopHeader.style.boxShadow = 'none';
-  }
-});
-
-
-  // Scroll animation for About section
-  window.addEventListener('scroll', function () {
-    const aboutSection = document.querySelector('.about-section');
-    const position = aboutSection.getBoundingClientRect().top;
-    const screenHeight = window.innerHeight / 1.3;
-
-    if (position < screenHeight) {
-      aboutSection.classList.add('show');
-    }
-  });
 
   document.querySelectorAll('.shop-card').forEach(card => {
   const slides = card.querySelectorAll('.shop-slide');
@@ -180,14 +165,11 @@ function toggleNav() {
       document.getElementById("side-nav").classList.toggle("open");
     }
 
-    
-
-
-
 let carouselImages = document.querySelectorAll('.hero-carousel .hero-image');
     let currentIndex1 = 0;
 
     function showNextImage() {
+
   // Remove current active image
   carouselImages[currentIndex1].classList.remove('active');
 
@@ -197,7 +179,6 @@ let carouselImages = document.querySelectorAll('.hero-carousel .hero-image');
   // Add active class to the new image
   carouselImages[currentIndex1].classList.add('active');
 }
-
 
     setInterval(showNextImage, 4000); // change every 4 seconds
   
@@ -229,3 +210,35 @@ let carouselImages = document.querySelectorAll('.hero-carousel .hero-image');
         showSlide(current);
     }, 5000);
 
+    const lightbox = GLightbox({
+    selector: '.glightbox'
+  });
+
+  //for the featured products on home page 
+  function scrollLeft() {
+  document.querySelector('.carousel .product-track').scrollBy({
+    left: -300,
+    behavior: 'smooth'
+  });
+}
+
+function scrollRight() {
+  document.querySelector('.carousel .product-track').scrollBy({
+    left: 300,
+    behavior: 'smooth'
+  });
+}
+
+function openModal(imageSrc, title, price) {
+  document.getElementById('modalImage').src = imageSrc;
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalPrice').textContent = price;
+  document.getElementById('productModal').style.display = 'block';
+}
+
+function closeModal() {
+  document.getElementById('productModal').style.display = 'none';
+}
+
+
+  
