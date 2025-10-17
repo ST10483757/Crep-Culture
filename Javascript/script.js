@@ -97,7 +97,7 @@ function closeNav() {
 
   // Scroll animation for About section
   window.addEventListener('scroll', function () {
-    const aboutSection = document.querySelector('.about-section');
+    const aboutSection = document.querySelector('.footer-container');
     const position = aboutSection.getBoundingClientRect().top;
     const screenHeight = window.innerHeight / 1.3;
 
@@ -107,23 +107,23 @@ function closeNav() {
   });
 
 
-const gridBtn = document.getElementById("gridView");
-const listBtn = document.getElementById("listView");
-const productGrid = document.querySelector(".shop-grid");
+//const gridBtn = document.getElementById("gridView");
+//const listBtn = document.getElementById("listView");
+//const productGrid = document.querySelector(".shop-grid");
 
-gridBtn.addEventListener("click", () => {
-  productGrid.classList.remove("shop-list");
-  productGrid.classList.add("shop-grid");
-  gridBtn.classList.add("active");
-  listBtn.classList.remove("active");
-});
+//gridBtn.addEventListener("click", () => {
+ // productGrid.classList.remove("shop-list");
+ // productGrid.classList.add("shop-grid");
+ // gridBtn.classList.add("active");
+  //listBtn.classList.remove("active");
+//});
 
-listBtn.addEventListener("click", () => {
-  productGrid.classList.remove("shop-grid");
-  productGrid.classList.add("shop-list");
-  listBtn.classList.add("active");
-  gridBtn.classList.remove("active");
-});
+//listBtn.addEventListener("click", () => {
+ // productGrid.classList.remove("shop-grid");
+  //productGrid.classList.add("shop-list");
+  //listBtn.classList.add("active");
+ // gridBtn.classList.remove("active");
+//});
 
   document.querySelectorAll('.shop-card').forEach(card => {
   const slides = card.querySelectorAll('.shop-slide');
@@ -228,17 +228,3 @@ function scrollRight() {
     behavior: 'smooth'
   });
 }
-
-function openModal(imageSrc, title, price) {
-  document.getElementById('modalImage').src = imageSrc;
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalPrice').textContent = price;
-  document.getElementById('productModal').style.display = 'block';
-}
-
-function closeModal() {
-  document.getElementById('productModal').style.display = 'none';
-}
-
-
-  
