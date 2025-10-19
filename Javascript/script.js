@@ -171,48 +171,44 @@ let carouselImages = document.querySelectorAll('.hero-carousel .hero-image');
     function showNextImage() {
 
   // Remove current active image
-  carouselImages[currentIndex1].classList.remove('active');
+ // carouselImages[currentIndex1].classList.remove('active');
 
   // Move to next index
-  currentIndex1 = (currentIndex1 + 1) % carouselImages.length;
+  //currentIndex1 = (currentIndex1 + 1) % carouselImages.length;
 
   // Add active class to the new image
-  carouselImages[currentIndex1].classList.add('active');
+  //carouselImages[currentIndex1].classList.add('active');
 }
 
-    setInterval(showNextImage, 4000); // change every 4 seconds
+    //setInterval(showNextImage, 4000); // change every 4 seconds
   
-    const slider = document.querySelectorAll(".testimonial-slide");
-    const prevButton = document.querySelector(".nav-btn.prev");
-    const nextButton = document.querySelector(".nav-btn.next");
-    let current = 0;
+    //const slider = document.querySelectorAll(".testimonial-slide");
+    //const prevButton = document.querySelector(".nav-btn.prev");
+    //const nextButton = document.querySelector(".nav-btn.next");
+    //let current = 0;
 
-    function showSlide(index) {
-        slides.forEach((slider, i) => {
-            slider.classList.remove("active");
-            if(i === index) slider.classList.add("active");
-        });
-    }
+    //function showSlide(index) {
+       // slides.forEach((slider, i) => {
+       //     slider.classList.remove("active");
+          //  if(i === index) slider.classList.add("active");
+       // });
+   // }
 
-    prevBtn.addEventListener("click", () => {
-        current = (current === 0)? slider.length - 1 : current - 1;
-        showSlide(current);
-    });
+    //prevBtn.addEventListener("click", () => {
+        //current = (current === 0)? slider.length - 1 : current - 1;
+       // showSlide(current);
+    //});
 
-    nextBtn.addEventListener("click", () => {
-        current = (current === slider.length - 1)? 0 : current + 1;
-        showSlide(current);
-    });
+    //nextBtn.addEventListener("click", () => {
+        //current = (current === slider.length - 1)? 0 : current + 1;
+       // showSlide(current);
+    //});
 
-    // Optional: Auto-play the testimonials every 5 seconds
-    setInterval(() => {
-        current = (current + 1) % slider.length;
-        showSlide(current);
-    }, 5000);
 
-    const lightbox = GLightbox({
-    selector: '.glightbox'
-  });
+
+    //const lightbox = GLightbox({
+    //selector: '.glightbox'
+  //});
 
   //for the featured products on home page 
   function scrollLeft() {
