@@ -594,7 +594,6 @@
     });
   })();
 
-
 document.querySelectorAll('.product-card').forEach(card => {
   const images= card.querySelectorAll('.product-images img');
   let current = 0;
@@ -617,7 +616,56 @@ document.querySelectorAll('.product-card').forEach(card => {
     });
   });
 });
-</script>
+//This is for the search 
+function filterProducts() {
+  const input = document.getElementById('search').value.toLowerCase();
+  const products = document.querySelectorAll('.shop-card');
+
+  products.forEach(product => {
+    const name = product.querySelector('h3').textContent.toLowerCase();
+    product.style.display = name.includes(input) ? 'block' : 'none';
+  });
+}
+//This is for the sort button
+function sortProducts() {
+  const sortValue = document.getElementById('sort').value;
+  const grid = document.getElementById('shop-grid');
+  const cards = Array.from(grid.getElementsByClassName('shop-card'));
+
+  let sortedCards;
+
+  if (sortValue === 'name-asc') {
+    sortedCards = cards.sort((a, b) => {
+      const nameA = a.querySelector('h3').textContent.toLowerCase();
+      const nameB = b.querySelector('h3').textContent.toLowerCase();
+      return nameA.localeCompare(nameB);
+    });
+  } else if (sortValue === 'name-desc') {
+    sortedCards = cards.sort((a, b) => {
+      const nameA = a.querySelector('h3').textContent.toLowerCase();
+      const nameB = b.querySelector('h3').textContent.toLowerCase();
+      return nameB.localeCompare(nameA);
+    });
+  } else if (sortValue === 'price-asc') {
+    sortedCards = cards.sort((a, b) => {
+      const priceA = parseFloat(a.querySelector('.price').textContent.replace(/[^\d.,]/g, '').replace(',', '.'));
+      const priceB = parseFloat(b.querySelector('.price').textContent.replace(/[^\d.,]/g, '').replace(',', '.'));
+      return priceA - priceB;
+    });
+  } else if (sortValue === 'price-desc') {
+    sortedCards = cards.sort((a, b) => {
+      const priceA = parseFloat(a.querySelector('.price').textContent.replace(/[^\d.,]/g, '').replace(',', '.'));
+      const priceB = parseFloat(b.querySelector('.price').textContent.replace(/[^\d.,]/g, '').replace(',', '.'));
+      return priceB - priceA;
+    });
+  } else {
+    return; // 'default' selected, do nothing
+  }
+
+  // Clear and re-append sorted cards
+  grid.innerHTML = '';
+  sortedCards.forEach(card => grid.appendChild(card));
+}
 
 </script>
 

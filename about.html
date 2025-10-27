@@ -73,30 +73,36 @@
       <li><a href="returns.html">Returns & Exchanges</a></li>
     </ul>
   </section>
+  <div class="floating-testimonials">
+  <div class="floating-testimonials">
+  <div class="floating-bubble" style="top: 10%; left: 5%;">
+    <img src="images/alice.jpg" alt="Alice Johnson" class="profile-pic">
+    <div class="stars">★★★★★</div>
+    <blockquote>"Such quality sneakers! Exceeded my expectations."</blockquote>
+    <div class="author">– Alice Johnson</div>
+  </div>
 
-</head>
-<body>
+  <div class="floating-bubble" style="top: 30%; right: 10%;">
+    <img src="images/mark.jpg" alt="Mark Smith" class="profile-pic">
+    <div class="stars">★★★★☆</div>
+    <blockquote>"Fast shipping and great service!"</blockquote>
+    <div class="author">– Mark Smith</div>
+  </div>
 
-<div class="testimonial-container">
-    <div class="testimonial-slide active">
-        <blockquote>"Such quality sneakers ?! This exceeded my expectations. Highly recommended!"</blockquote>
-        <div class="author">- Alice Johnson</div>
-    </div>
-    <div class="testimonial-slide">
-        <blockquote>"Excellent customer service and fast shipping. Will buy again."</blockquote>
-        <div class="author">- Mark Smith</div>
-    </div>
-    <div class="testimonial-slide">
-        <blockquote>"A seamless shopping experience from start to finish."</blockquote>
-        <div class="author">- Sophia Lee</div>
-    </div
-    </div>
-
+  <div class="floating-bubble" style="bottom: 15%; left: 20%;">
+    <img src="images/sophia.jpg" alt="Sophia Lee" class="profile-pic">
+    <div class="stars">★★★★★</div>
+    <blockquote>"A seamless shopping experience."</blockquote>
+    <div class="author">– Sophia Lee</div>
+  </div>
+</div>
+</div>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Crep Culture. All rights reserved.</p>
   </footer>
+  //Inline js
 <script>
   let currentIndex = 0;
   const images = document.querySelectorAll('.hero-image');
@@ -115,6 +121,36 @@
 
   // Change every 3 seconds
   setInterval(showNextImage, 3000);
+
+  //for testimonial
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelectorAll('.testimonial-slide');
+  let current = 0;
+
+  function showNextSlide() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }
+
+  setInterval(showNextSlide, 4000);
+
+//For the stars in the reviews 
+  let startX = 0;
+  document.querySelector('.testimonial-container').addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  });
+
+  document.querySelector('.testimonial-container').addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) {
+      nextSlide(); // swipe left
+    } else if (endX - startX > 50) {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current); // swipe right
+    }
+  });
+});
 </script>
 </body>
 </html>
