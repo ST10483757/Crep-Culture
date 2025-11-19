@@ -44,4 +44,49 @@ AJAX for the form
 
 Font Awesome (for icons)
 
+#Update 4 Final POE submission
+Cart Functionality from Part 2 
+Implemented Add to Cart logic:
+Grabs product name, image, size, price, and quantity from each .shop-card.
+Updates cart array and dynamically renders cart items in the summary.
+Added cart count display (Cart (0 → 1 → 2)).
+
+Improved cart summary layout:
+Product image, description, size, quantity, and price shown clearly.
+“Proceed to Checkout →” styled in thin grey font for a professional look.
+
+Added remove item functionality with live updates to cart and total.
+Implemented toggle behavior:
+Cart opens/closes when clicking the 🛒 icon.
+Cart stays open when interacting inside.
+
+Sorting & Filtering
+Added sort dropdown (#sort) with options:
+Fixed sorting logic to target .product-price span directly (clean numeric values).
+Ensured sorted products re-render correctly inside the container (#shop-product or #shop-grid).
+Search input (#search) filters sneakers by name (already in place).
+
+Styling & UX Enhancements
+Cart summary styled with:
+Clean fonts, proper contrast, structured spacing.
+Borders, padding, and subtle transitions for professional polish.
+Added fade/slide transition when cart opens/closes.
+Improved readability of product prices and cart totals.
+
+Assets & Images
+Removed unused product images to clean up the project.
+Updated image paths in product cards to match new file structure.
+Ensured all <img> tags use class="product-img" for consistency with JavaScript selectors.
+Added SVG and PNG icons for cart and UI polish
+
+Pages
+Added FAQ page with customer support information
+Also added more javascript pages
+
+Fixes
+Corrected broken asset paths
+Fixed JavaScript errors in cart and sorting
+
+
+
 Google Fonts (for typography)
