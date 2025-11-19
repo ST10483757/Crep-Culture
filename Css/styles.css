@@ -761,6 +761,21 @@ nav a.active {
 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 margin-left: 250%;
 position: relative;
+align-items: center;
+  flex-wrap: wrap; /* allows logo + nav to stack if needed */
+  padding: 1rem;
+}
+.logo {
+  font-size: clamp(1rem, 2vw, 2rem); /* scales with screen size */
+  flex: 1; /* allows it to take space */
+  text-align: center; /* keeps it visible */
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
 }
 
 /* SEARCH & SORT*/
