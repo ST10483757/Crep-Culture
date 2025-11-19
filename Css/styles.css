@@ -765,12 +765,6 @@ align-items: center;
 
 }
 
-@media (max-width: 768px) {
-  .logo {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-}
 
 /* SEARCH & SORT*/
 .shop-filters {
