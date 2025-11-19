@@ -1,130 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us</title>
-  <link rel="stylesheet" href="Css/styles.css"> <!-- Your external CSS -->
-  <style>
-    /* Inline fixes for side nav + burger */
-    body { margin:0; font-family: Arial, sans-serif; }
-
-    header.fixed {
-      height:64px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:#fafafa;
-      box-shadow:0 1px 4px rgba(0,0,0,0.05);
-      position:relative;
-      z-index:2;
-    }
-
-    header.fixed h1 { margin:0; font-size:18px; }
-
-    /* Burger */
-.cc-burger {
-  position: fixed;
-  left: 14px;
-  top: 14px;
-  z-index: 20002;
-  width: 44px;
-  height: 40px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:flex-start;
-  gap:6px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.cc-side-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 260px;
-  height: 100%;
-  background: #111;
-  color: #fff;
-  padding-top: 80px;
-  box-sizing: border-box;
-
-  /* start hidden */
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-
-  z-index: 20001;
-}
-
-/* show when open */
-.cc-side-nav.open {
-  transform: translateX(0);
-}
-.cc-side-nav a {
-  display: block;
-  color: #fff;   /* force white so it shows on dark background */
-  text-decoration: none;
-  padding: 12px 20px;
-  font-size: 18px;
-}
-.cc-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 20000;
-  display: none;
-}
-
-.cc-overlay.active {
-  display: block;
-}
-
-
-.cc-side-nav a:hover {
-  background: rgba(255,255,255,0.1);
-}
-
-
-.cc-burger .cc-bar {
-  display:block;
-  width:30px;
-  height:3px;
-  background:#111;
-  border-radius:2px;
-  transition: transform .32s ease, opacity .2s ease;
-}
-
-/* X animation — use nth-of-type so it always works */
-.cc-burger.open .cc-bar:nth-of-type(1) {
-  transform: translateY(9px) rotate(45deg);
-}
-.cc-burger.open .cc-bar:nth-of-type(2) {
-  opacity: 0;
-}
-.cc-burger.open .cc-bar:nth-of-type(3) {
-  transform: translateY(-9px) rotate(-45deg);
-}
-
-  </style>
+  <link rel="stylesheet" href="Css/styles.css">
 </head>
 <body>
   <!-- Header -->
   <header class="fixed">
     <h1>Contact Us</h1>
     <button class="cc-burger" aria-label="Open menu" aria-controls="cc-side-nav" aria-expanded="false">
-    <span class="cc-bar"></span>
-    <span class="cc-bar"></span>
-    <span class="cc-bar"></span>
-  </button>
+      <span class="cc-bar"></span>
+      <span class="cc-bar"></span>
+      <span class="cc-bar"></span>
+    </button>
   </header>
 
   <!-- Side nav -->
-  <nav id="cc-side-nav" class="cc-side-nav" aria-hidden="true">
+  <nav id="cc-side-nav" class="cc-side-nav" aria-hidden="true" role="navigation">
     <ul>
       <li><a href="Page1.html">Home</a></li>
       <li><a href="about.html">About</a></li>
@@ -133,12 +27,13 @@
     </ul>
   </nav>
   <div id="cc-overlay" class="cc-overlay" aria-hidden="true"></div>
-  <!-- Contact Information -->
+
+  <!-- Contact Info -->
   <section class="contact-info">
     <h2>Our Contact Information</h2>
     <p><strong>Phone:</strong> +27 60 365 9336</p>
     <p><strong>Email:</strong> nobuhlemalindi.nm@gmail.com</p>
-    <p><strong>Address:</strong> 16 Hollyhock Cresent , Johannesburg Eastren Suburbs, South Africa</p>
+    <p><strong>Address:</strong> 16 Hollyhock Crescent, Johannesburg Eastern Suburbs, South Africa</p>
   </section>
 
   <!-- Maps -->
@@ -159,182 +54,80 @@
   <!-- Contact Form -->
   <section class="contact-form">
     <h2>Get in Touch</h2>
-    <form action="#" method="post">
+    <form id="contactForm" action="#" method="post" novalidate>
       <label for="name">Full Name/s:</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name" required />
+
       <label for="surname">Surname:</label>
-      <input type="text" id="surname" name="surname" required>
+      <input type="text" id="surname" name="surname" required />
+
       <label for="email">Email address:</label>
-      <input type="text" id="email" name="email" required>
-      <label for="contact">Phone numbers: </label>
-      <input type="text" id="contact" name="contact" required>
+      <input type="email" id="email" name="email" required />
+
+      <label for="contact">Phone number:</label>
+      <input type="tel" id="contact" name="contact" required />
+
       <label for="reason">Reason for contacting us:</label>
-      <input type="text" id="reason" name="message" required>
+      <textarea id="reason" name="message" required></textarea>
+
       <button type="submit">Send Message</button>
     </form>
-    <div id="formMessage" class="form-message"></div>
+    <div id="formMessage" class="form-message" aria-live="polite"></div>
   </section>
 
   <footer class="site-footer">
     <p>&copy; 2025 Crep Culture. All rights reserved.</p>
   </footer>
+<script src="Javascript/script.js"></script>
+<script>
+  //This is for ham burger for the contact html page 
+// Burger menu logic
+(function () {
+  const burger = document.querySelector('.cc-burger');
+  const nav = document.getElementById('cc-side-nav');
+  const overlay = document.getElementById('cc-overlay');
 
-  <script>
-    (function(){
-    const burger = document.querySelector('.cc-burger');
-    const nav = document.getElementById('cc-side-nav');
-    const overlay = document.getElementById('cc-overlay');
-
-    if(!burger || !nav || !overlay){
-      console.error('Missing burger/nav/overlay elements (check IDs/classes).');
-      return;
-    }
-
-    function openNav(){
-      burger.classList.add('open');
-      nav.classList.add('open');
-      overlay.classList.add('active');
-      burger.setAttribute('aria-expanded','true');
-      nav.setAttribute('aria-hidden','false');
-      overlay.setAttribute('aria-hidden','false');
-    }
-    function closeNav(){
-      burger.classList.remove('open');
-      nav.classList.remove('open');
-      overlay.classList.remove('active');
-      burger.setAttribute('aria-expanded','false');
-      nav.setAttribute('aria-hidden','true');
-      overlay.setAttribute('aria-hidden','true');
-    }
-    function toggleNav(){
-      if(nav.classList.contains('open')) closeNav();
-      else openNav();
-    }
-
-    // click burger
-    burger.addEventListener('click', toggleNav);
-
-    // click overlay
-    overlay.addEventListener('click', closeNav);
-
-    // close when any nav link clicked
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
-
-    // keyboard: Esc closes, Enter/Space toggles burger when focused
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Escape') closeNav();
-      if((e.key === 'Enter' || e.key === ' ') && document.activeElement === burger){
-        e.preventDefault(); toggleNav();
-      }
-    });
-  })();
-
-  //Javascript form validation
-
-function validateContactForm(event) {
-  event.preventDefault(); // Stop form from submitting
-
-  const name = document.getElementById('name').value.trim();
-  const surname = document.getElementById('surname').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const contact = document.getElementById('contact').value.trim();
-  const reason = document.getElementById('reason').value.trim();
-
-  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  const phonePattern = /^[0-9]{10}$/;
-
-  if (!name || !surname || !email || !contact || !reason) {
-    alert("Please fill in all fields.");
-    return false;
-  }
-
-  if (!emailPattern.test(email)) {
-    alert("Please enter a valid email address.");
-    return false;
-  }
-
-  if (!phonePattern.test(contact)) {
-    alert("Please enter a valid 10-digit phone number.");
-    return false;
-  }
-
-  alert("Form submitted successfully!");
-  return true;
-}
-
-// This ataches validation to form
-document.querySelector('.contact-form form').addEventListener('submit', validateContactForm);
-
-//Ajax form , error handling
-document.getElementById('contactForm').addEventListener('submit', async function(event) {
-  event.preventDefault();
-
-  // The values are being grabbed here
-  const name = document.getElementById('name').value.trim();
-  const surname = document.getElementById('surname').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const contact = document.getElementById('contact').value.trim();
-  const reason = document.getElementById('reason').value.trim();
-
-  // Validation patterns
-  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  const phonePattern = /^[0-9]{10}$/;
-
-  // Message box
-  const messageBox = document.getElementById('formMessage');
-
-  function showMessage(text, type) {
-    messageBox.textContent = text;
-    messageBox.className = `form-message ${type}`;
-    messageBox.style.display = 'block';
-    setTimeout(() => {
-      messageBox.style.display = 'none';
-    }, 5000);
-  }
-
-  // Validation checks
-  if (!name || !surname || !email || !contact || !reason) {
-    showMessage("Please fill in all fields.", "error");
+  if (!burger || !nav || !overlay) {
+    console.error('Missing burger/nav/overlay elements.');
     return;
   }
 
-  if (!emailPattern.test(email)) {
-    showMessage("Invalid email format.", "error");
-    return;
+  function openNav() {
+    burger.classList.add('open');
+    nav.classList.add('open');
+    overlay.classList.add('active');
+    burger.setAttribute('aria-expanded', 'true');
+    nav.setAttribute('aria-hidden', 'false');
+    overlay.setAttribute('aria-hidden', 'false');
   }
 
-  if (!phonePattern.test(contact)) {
-    showMessage("Phone number must be 10 digits.", "error");
-    return;
+  function closeNav() {
+    burger.classList.remove('open');
+    nav.classList.remove('open');
+    overlay.classList.remove('active');
+    burger.setAttribute('aria-expanded', 'false');
+    nav.setAttribute('aria-hidden', 'true');
+    overlay.setAttribute('aria-hidden', 'true');
   }
 
-  // Prepare data
-  const formData = {
-    name,
-    surname,
-    email,
-    contact,
-    reason
-  };
-
-  try {
-    const response = await fetch('https://your-server-endpoint.com/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
-
-    if (!response.ok) throw new Error(`Server error: ${response.status}`);
-
-    const result = await response.json();
-    showMessage("Message sent successfully!", "success");
-    document.getElementById('contactForm').reset();
-
-  } catch (error) {
-    console.error("Submission failed:", error);
-    showMessage("Oops! Something went wrong. Please try again.", "error");
+  function toggleNav() {
+    if (nav.classList.contains('open')) closeNav();
+    else openNav();
   }
-});
+
+  burger.addEventListener('click', toggleNav);
+  overlay.addEventListener('click', closeNav);
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNav();
+    if ((e.key === 'Enter' || e.key === ' ') && document.activeElement === burger) {
+      e.preventDefault();
+      toggleNav();
+    }
+  });
+})();
+
 </script>
 </body>
 </html>

@@ -29,15 +29,27 @@
   <div id="cc-overlay" class="cc-overlay" aria-hidden="true"></div>
 
     <!-- Login & Cart -->
-    <div class="header-actions">
-      <a href="login.html" class="icon-btn" aria-label="Account">👤</a>
-      <a href="cart.html" class="icon-btn cart-link" aria-label="Cart">
-        🛒<span id="cart-count" class="badge">0</span>
-      </a>
-    </div>
+<div class="header-actions">
+  <a href="login.html" class="icon-btn" aria-label="Account">👤</a>
+  <button id="cart-btn" class="icon-btn cart-link" aria-label="Cart">
+    🛒<span id="cart-count" class="badge">0</span>
+  </button>
+</div>
+
+<!-- Cart Summary (hidden by default) -->
+<div id="cart-summary" class="hidden">
+  <h2>🛒 Cart (<span id="cart-count">0</span>)</h2>
+  <ul id="cart-items"></ul>
+  <div class="cart-footer">
+    <p><strong>Total:</strong> R<span id="cart-total">0.00</span></p>
+    <p class="checkout-text">Proceed to Checkout →</p>
+  </div>
+</div>
   </header>
+
+
   <style>
-      .cc-burger {
+  .cc-burger {
   position: fixed;
   left: 14px;
   top: 14px;
@@ -53,7 +65,6 @@
   border: none;
   cursor: pointer;
 }
-
 .cc-side-nav {
   position: fixed;
   top: 0;
@@ -68,7 +79,6 @@
   /* start hidden */
   transform: translateX(-100%);
   transition: transform 0.3s ease;
-
   z-index: 20001;
 }
 
@@ -98,11 +108,9 @@
   display: block;
 }
 
-
 .cc-side-nav a:hover {
   background: rgba(255,255,255,0.1);
 }
-
 
 .cc-burger .cc-bar {
   display:block;
@@ -123,14 +131,12 @@
 .cc-burger.open .cc-bar:nth-of-type(3) {
   transform: translateY(-9px) rotate(-45deg);
 }
-
-  </style>
+</style>
 
   <!-- PAGE TITLE -->
   <section class="page-title">
     <h1>Shop Sneakers</h1>
   </section>
-
   <!-- SEARCH & SORT -->
   <section class="shop-filters">
     <input type="text" id="search" placeholder="Search sneakers..." onkeyup="filterProducts()">
@@ -142,410 +148,401 @@
       <option value="name-desc">Name: Z → A</option>
     </select>
   </section>
+  <!-- Products -->
+<section id="shop-product"class="shop-container">
+  <!-- Product 1 -->
+  <article class="shop-card">
+    <div class="shop-product-images">
+      <img class="product-img" src="images/Air Max 95 Mars Stone (2).jpeg" alt="Air Max 95 Mars Stone">
+    </div>
+    <div class="shop-product-info">
+      <h3>Nike Air Max 95 Mars Stone</h3>
+      <p class="price">R<span class="product-price">3979.13</span></p>
+      <label>Select size:</label>
+      <select class="size-select">
+        <option value="4" data-price="3979.13">4</option>
+        <option value="5" data-price="4099.00">5</option>
+        <option value="6" data-price="4199.00">6</option>
+        <option value="7" data-price="4299.00">7</option>
+        <option value="8" data-price="4399.00">8</option>
+        <option value="9" data-price="4499.00">9</option>
+        <option value="10" data-price="4599.00">10</option>
+      </select>
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" min="1" value="1">
+      <button class="btn add-to-cart" data-name="Nike Air Max 95 Mars Stone">Add to Cart</button>
+    </div>
+  </article>
 
-  <!-- SHOP GRID -->
-  <main>
-    <section class="shop-grid" id="shop-grid">
-      
-      <!-- Product 1 -->
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Air Max 95 Mars Stone (2).jpeg" alt="Air Max 95 Mars Stone">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Air Max 95 Mars Stone</h3>
-          <p class="price">from R3979,13</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
+  <!-- Product 2 -->
+  <article class="shop-card">
+    <div class="shop-product-images">
+      <img class="product-img" src="images/Travis Scott x Air Jordan 1 Low OG Olive.jpeg" alt="Travis Scott Jordan 1">
+    </div>
+    <div class="shop-product-info">
+      <h3>Travis Scott x Nike Air Jordan 1 Low OG Olive</h3>
+      <p class="price">R<span class="product-price">7999.00</span></p>
+      <label>Select size:</label>
+      <select class="size-select">
+        <option value="4" data-price="7999.00">4</option>
+        <option value="5" data-price="9999.99">5</option>
+        <option value="6" data-price="13000.00">6</option>
+        <option value="7" data-price="15000.00">7</option>
+        <option value="8" data-price="16999.00">8</option>
+        <option value="9" data-price="18099.00">9</option>
+        <option value="10" data-price="20000.00">10</option>
+      </select>
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" min="1" value="1">
+      <button class="btn add-to-cart" data-name="Travis Scott x Nike Air Jordan 1 Low OG Olive">Add to Cart</button>
+    </div>
+  </article>
 
-      <!-- Product 2 -->
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Travis Scott x Air Jordan 1 Low OG _Olive”.jpeg" alt="Travis Scott Jordan 1">
-        </div>
-        <div class="shop-product-info">
-          <h3>Travis Scott x Nike Air Jordan 1 Low OG Olive</h3>
-          <p class="price"> from R3599,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
+  <!-- Product 3 -->
+  <article class="shop-card">
+    <div class="shop-product-images">
+      <img class="product-img" src="images/Nike Air Max 1 Essential Women's Shoe.jpeg" alt="Nike Air Max">
+    </div>
+    <div class="shop-product-info">
+      <h3>Nike Air Max 1 Gray</h3>
+      <p class="price">R<span class="product-price">3799.00</span></p>
+      <label>Select size:</label>
+      <select class="size-select">
+        <option value="4" data-price="3799.00">4</option>
+        <option value="5" data-price="3899.00">5</option>
+        <option value="6" data-price="3999.00">6</option>
+        <option value="7" data-price="4099.00">7</option>
+        <option value="8" data-price="4199.00">8</option>
+        <option value="9" data-price="4299.00">9</option>
+        <option value="10" data-price="4399.00">10</option>
+      </select>
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" min="1" value="1">
+      <button class="btn add-to-cart" data-name="Nike Air Max 1 Gray">Add to Cart</button>
+    </div>
+  </article>
 
-      <!-- Product 3 -->
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Nike Air Max 1 Essential Women's Shoe.jpeg" alt="Nike Air Max">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Air Max 1 Gray</h3>
-          <p class="price">from R3799,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Nike Sb Yuto Horigome Dunk Low (size 5) (fq1180-001) Wolf Grey_iron Grey Matcha.jpeg" alt="Nike sb Dunk LOW ">
-        </div>
-        <div class="shop-product-info">
-          <h3>NIKE SB Yuto Horigome DUNK LOW</h3>
-          <p class="price">from R6999,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Nigel Sylvester x Air Jordan 4 RM Athletic Shoes Driveway Grey.jpeg" alt="Nigel Sylvester">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nigel Sylvester Air Jordan 4 Driveway Grey</h3>
-          <p class="price">from R15999,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Nike Air Max 1.jpeg" alt="Nike Air Max 1 ">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Air Max 1 Orange </h3>
-          <p class="price">from R4999,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Travis Scott's Golf Kicks Incoming! 🚀__The….jpeg" alt="Travis Scott Jordan 1 ">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Air Jordan 1 Low x Travis Scott Golf Kicks</h3>
-          <p class="price">from R4999,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Nike Dunk High.jpeg" alt="Nike Dunk High Tops">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Dunk High Tops</h3>
-          <p class="price">from R5999,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Air Jordan Retro 4 A Maniere.jpeg" alt="Nike Air Jordan 4 Retro OG">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Air Jordan 4 Retro OG SP A Ma Maniére</h3>
-          <p class="price">from R10000,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/NIKE AIR MAX 95 OG BLACK _ SUNDIAL - ANTHRACITE.jpeg" alt="Nike Air Max 95 OG">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Air Max 95 OG Black</h3>
-          <p class="price">from R7999,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Corteiz x Nike Air Max 95 “Honey Black”.jpeg" alt="Nike Air Max 95 Corteiz">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Air Max 95 Corteiz Honey Black</h3>
-          <p class="price">from R4999,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/ike Air Max 1 Blue.jpeg" alt="Nike Air Max 1">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Air Max 1 Sky Blue</h3>
-          <p class="price">from R3999,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/The Adidas Samba OG Preloved Red Leopard is back….jpeg" alt="Adidas Samba OG">
-        </div>
-        <div class="shop-product-info">
-          <h3>Adidas Samba OG Red Leopard</h3>
-          <p class="price">from R3500,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/NOCTA Glide Triple White.jpeg" alt="Nike Nocta Glide">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike x Drake Nocta Glide Triple White</h3>
-          <p class="price">from R8999,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Yeezy 700 V3 'Azael' (2019_2022).jpeg" alt="Yeezy Boost 700">
-        </div>
-        <div class="shop-product-info">
-          <h3>Yeezy Boost 700 V3 Azael</h3>
-          <p class="price">from R4999,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Sneakers Nike Women's Air Max 1 87 Safari _Coconut Milk_ Beige Size 5_5.jpeg" alt="Nike Air Max ">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Air Max 1 Safari Coconut</h3>
-          <p class="price">from R4999,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Yeezy Boost 700 Sneakers - Grey.jpeg" alt="Yeezy Boost 700">
-        </div>
-        <div class="shop-product-info">
-          <h3>Yeezy Boost 700 V3 Grey</h3>
-          <p class="price">from R4999,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Air Jordan 4 Retro Og Sp Nigel Sylvester Brick By Brick 36.jpeg" alt="Nigel Sylvester">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Nigel Sylvester Brick by Brick </h3>
-          <p class="price">from R14999,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/ADIDAS YEEZY 700 V3 ARZARETH.jpeg" alt="Yeezy Boost 700 ">
-        </div>
-        <div class="shop-product-info">
-          <h3>Yeezy Boost 700 V3 Arzareth</h3>
-          <p class="price">from R6899,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Jordan 1 Green.jpeg" alt="Nike Dunk">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Dunk Green</h3>
-          <p class="price">R4899,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Cement AIr Jordan Retro 4.jpeg" alt="Nike Air Jordan Retro">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Air Jordan 4 Retro Cement</h3>
-          <p class="price">from R7000,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Nuova Air Jordan 1 Retro Low OG SP Travis Scott….jpeg" alt="Nike Air Jordan 1">
-        </div>
-        <div class="shop-product-info">
-          <h3>Travis Scott Nuova Air Jordan 1 Retro Low OG SP</h3>
-          <p class="price">from R12509,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Air Jordan 1 Green.jpeg" alt="Nike Jordan">
-        </div>
-        <div class="shop-product-info">
-          <h3>Jordan</h3>
-          <p class="price">from R8000,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-      <article class="shop-card">
-        <div class="shop-product-images">
-          <img src="images/Air Jordan 4 Retro x Off-White Sail.jpeg" alt="Air Jordan 4 Retro">
-        </div>
-        <div class="shop-product-info">
-          <h3>Nike Air Jordan 4 Retro x Off-White Sail</h3>
-          <p class="price">from R10000,00</p>
-          <label for="size">Select size:</label>
-          <select id="size">
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option>
-            <option>10</option>
-          </select>
-          <button class="btn add-to-cart">Add to Cart</button>
-        </div>
-      </article>
-    </section>
+  <!-- Product 4 -->
+  <article class="shop-card">
+    <div class="shop-product-images">
+      <img class="product-img" src="images/NIKE SB DUNK LOW YUTO HORIGOME.jpeg" alt="Nike SB Dunk Low">
+    </div>
+    <div class="shop-product-info">
+      <h3>NIKE SB Yuto Horigome DUNK LOW</h3>
+      <p class="price">R<span class="product-price">6999.00</span></p>
+      <label>Select size:</label>
+      <select class="size-select">
+        <option value="4" data-price="6999.00">4</option>
+        <option value="5" data-price="7199.00">5</option>
+        <option value="6" data-price="7399.00">6</option>
+        <option value="7" data-price="7599.00">7</option>
+        <option value="8" data-price="7799.00">8</option>
+        <option value="9" data-price="7999.00">9</option>
+        <option value="10" data-price="8199.00">10</option>
+      </select>
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" min="1" value="1">
+      <button class="btn add-to-cart" data-name="NIKE SB Yuto Horigome DUNK LOW">Add to Cart</button>
+    </div>
+  </article>
+
+  <!-- Product 5 -->
+  <article class="shop-card">
+    <div class="shop-product-images">
+      <img class="product-img" src="images/Nigel Sylvester x Air Jordan 4 RM Athletic Shoes Driveway Grey.jpeg" alt="Nigel Sylvester">
+    </div>
+    <div class="shop-product-info">
+      <h3>Nigel Sylvester Air Jordan 4 Driveway Grey</h3>
+      <p class="price">R<span class="product-price">15999.00</span></p>
+      <label>Select size:</label>
+      <select class="size-select">
+        <option value="4" data-price="15999.00">4</option>
+        <option value="5" data-price="16199.00">5</option>
+        <option value="6" data-price="16399.00">6</option>
+        <option value="7" data-price="16599.00">7</option>
+        <option value="8" data-price="16799.00">8</option>
+        <option value="9" data-price="16999.00">9</option>
+        <option value="10" data-price="17199.00">10</option>
+      </select>
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" min="1" value="1">
+      <button class="btn add-to-cart" data-name="Nigel Sylvester Air Jordan 4 Driveway Grey">Add to Cart</button>
+    </div>
+  </article>
+
+  <!-- Product 6 -->
+  <article class="shop-card">
+    <div class="shop-product-images">
+      <img class="product-img" src="images/Nike Air Max 1.jpeg" alt="Nike Air Max 1">
+    </div>
+    <div class="shop-product-info">
+      <h3>Nike Air Max 1 Orange</h3>
+      <p class="price">R<span class="product-price">2999.00</span></p>
+      <label>Select size:</label>
+      <select class="size-select">
+        <option value="4" data-price="2999.00">4</option>
+        <option value="5" data-price="3099.00">5</option>
+        <option value="6" data-price="3199.00">6</option>
+        <option value="7" data-price="3299.00">7</option>
+        <option value="8" data-price="3399.00">8</option>
+        <option value="9" data-price="3499.00">9</option>
+        <option value="10" data-price="3599.00">10</option>
+      </select>
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" min="1" value="1">
+      <button class="btn add-to-cart" data-name="Nike Air Max 1 Orange">Add to Cart</button>
+    </div>
+  </article>
+
+  <!-- Product 7 -->
+  <article class="shop-card">
+    <div class="shop-product-images">
+      <img class="product-img" src="images/Travis Scott's Golf Kicks.jpeg" alt="Travis Scott Golf Kicks">
+    </div>
+    <div class="shop-product-info">
+      <h3>Nike Air Jordan 1 Low x Travis Scott Golf Kicks</h3>
+      <p class="price">R<span class="product-price">9999.00</span></p>
+      <label>Select size:</label>
+      <select class="size-select">
+        <option value="4" data-price="9999.00">4</option>
+        <option value="5" data-price="10199.00">5</option>
+        <option value="6" data-price="11399.00">6</option>
+        <option value="7" data-price="15099.00">7</option>
+        <option value="8" data-price="17799.00">8</option>
+        <option value="9" data-price="18999.00">9</option>
+        <option value="10" data-price="19199.00">10</option>
+      </select>
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" min="1" value="1">
+      <button class="btn add-to-cart" data-name="Nike Air Jordan 1 Low x Travis Scott Golf Kicks">Add to Cart</button>
+    </div>
+  </article>
+
+  <!-- Product 8 -->
+  <article class="shop-card">
+    <div class="shop-product-images">
+      <img class="product-img" src="images/The Adidas Samba OG Preloved Red.jpeg" alt="Adidas Samba OG">
+    </div>
+    <div class="shop-product-info">
+      <h3>Adidas Samba OG Red Leopard</h3>
+      <p class="price">R<span class="product-price">3500.00</span></p>
+      <label>Select size:</label>
+      <select class="size-select">
+        <option value="4" data-price="3500.00">4</option>
+        <option value="5" data-price="3600.00">5</option>
+        <option value="6" data-price="3700.00">6</option>
+        <option value="7" data-price="3800.00">7</option>
+        <option value="8" data-price="3900.00">8</option>
+        <option value="9" data-price="4000.00">9</option>
+        <option value="10" data-price="4100.00">10</option>
+      </select>
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" min="1" value="1">
+      <button class="btn add-to-cart" data-name="Adidas Samba OG Red Leopard">Add to Cart</button>
+    </div>
+  </article>
+
+  <!-- Product 9 -->
+  <article class="shop-card">
+    <div class="shop-product-images">
+      <img class="product-img" src="images/NOCTA Glide Triple White.jpeg" alt="Nike Nocta Glide">
+    </div>
+    <div class="shop-product-info">
+      <h3>Nike x Drake Nocta Glide Triple White</h3>
+      <p class="price">R<span class="product-price">8999.00</span></p>
+      <label>Select size:</label>
+      <select class="size-select">
+        <option value="4" data-price="3999.00">4</option>
+        <option value="5" data-price="4199.00">5</option>
+        <option value="6" data-price="5399.00">6</option>
+        <option value="7" data-price="6599.00">7</option>
+        <option value="8" data-price="7799.00">8</option>
+        <option value="9" data-price="8999.00">9</option>
+        <option value="10" data-price="9199.00">10</option>
+      </select>
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" min="1" value="1">
+      <button class="btn add-to-cart" data-name="Nike x Drake Nocta Glide Triple White">Add to Cart</button>
+    </div>
+  </article>
+
+  <!-- Product 10 -->
+  <article class="shop-card">
+    <div class="shop-product-images">
+      <img class="product-img" src="images/Yeezy 700 V3 'Azael' (2019_2022).jpeg" alt="Yeezy Boost 700">
+    </div>
+    <div class="shop-product-info">
+      <h3>Yeezy Boost 700 V3 Azael</h3>
+      <p class="price">R<span class="product-price">5000.00</span></p>
+      <label>Select size:</label>
+      <select class="size-select">
+        <option value="4" data-price="5000.00">4</option>
+        <option value="5" data-price="5200.00">5</option>
+        <option value="6" data-price="5400.00">6</option>
+        <option value="7" data-price="5600.00">7</option>
+        <option value="8" data-price="5800.00">8</option>
+        <option value="9" data-price="6000.00">9</option>
+        <option value="10" data-price="6200.00">10</option>
+      </select>
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" min="1" value="1">
+      <button class="btn add-to-cart" data-name="Yeezy Boost 700 V3 Azael">Add to Cart</button>
+    </div>
+  </article>
+
+  <!-- Product 11 -->
+  <article class="shop-card">
+    <div class="shop-product-images">
+      <img class="product-img" src="images/Sneakers Nike Women's Air Max 1 87 Safari _Coconut Milk_ Beige Size 5_5.jpeg" alt="Nike Air Max Safari">
+    </div>
+    <div class="shop-product-info">
+      <h3>Nike Air Max 1 Safari Coconut</h3>
+      <p class="price">R<span class="product-price">4999.00</span></p>
+      <label>Select size:</label>
+      <select class="size-select">
+        <option value="4" data-price="4999.00">4</option>
+        <option value="5" data-price="5199.00">5</option>
+        <option value="6" data-price="5399.00">6</option>
+        <option value="7" data-price="5599.00">7</option>
+        <option value="8" data-price="5799.00">8</option>
+        <option value="9" data-price="5999.00">9</option>
+        <option value="10" data-price="6199.00">10</option>
+      </select>
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" min="1" value="1">
+      <button class="btn add-to-cart" data-name="Nike Air Max 1 Safari Coconut">Add to Cart</button>
+    </div>
+  </article>
+
+  <!-- Product 12 -->
+  <article class="shop-card">
+    <div class="shop-product-images">
+      <img class="product-img" src="images/Yeezy Boost 700 Sneakers - Grey.jpeg" alt="Yeezy Boost 700 Grey">
+    </div>
+    <div class="shop-product-info">
+      <h3>Yeezy Boost 700 V3 Grey</h3>
+      <p class="price">R<span class="product-price">4999.00</span></p>
+      <label>Select size:</label>
+      <select class="size-select">
+        <option value="4" data-price="4999.00">4</option>
+        <option value="5" data-price="5599.00">5</option>
+        <option value="6" data-price="6399.00">6</option>
+        <option value="7" data-price="7200.00">7</option>
+        <option value="8" data-price="7899.00">8</option>
+         </select>
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" min="1" value="1">
+      <button class="btn add-to-cart" data-name="Nike Air Max 1 Safari Coconut">Add to Cart</button>
+    </div>
+  </article>
+
+<article class="shop-card">
+  <div class="shop-product-images">
+    <img class="product-img" src="images/Adidas Superstar II W - Core Black_Core Black_Off White JP8164.jpeg" alt="AdidasSuperstarCoreBLACK">
+  </div>
+  <div class="shop-product-info">
+    <h3>Adidas SuperstarII W Core Black</h3>
+    <p class="price">R<span class="product-price">4999.00</span></p>
+    <label>Select size:</label>
+    <select class="size-select" aria-label="Select size for Yeezy Boost 700 V3 Grey">
+      <option value="4" data-price="4999.00">4</option>
+      <option value="5" data-price="5599.00">5</option>
+      <option value="6" data-price="6399.00">6</option>
+      <option value="7" data-price="7200.00">7</option>
+      <option value="8" data-price="7899.00">8</option>
+      <option value="9" data-price="8599.00">9</option>
+      <option value="10" data-price="9799.00">10</option>
+    </select>
+    <label>Quantity:</label>
+<input type="number" class="quantity-input" min="1" value="1">
+    <button class="btn add-to-cart"
+  data-name="Yeezy Boost 700 V3 Grey"> Add to Cart</button>
+  </div>
+</article>
+
+<article class="shop-card">
+  <div class="shop-product-images">
+    <img class="product-img" src="images/Air Jordan 1 Green.jpeg" alt="AirJordan">
+  </div>
+  <div class="shop-product-info">
+    <h3>Nike Air Jordan 1 Green</h3>
+    <p class="price">R<span class="product-price">4999.00</span></p>
+    <label>Select size:</label>
+    <select class="size-select" aria-label="Select size for Air Jordan 1 Green">
+      <option value="4" data-price="4999.00">4</option>
+      <option value="5" data-price="5599.00">5</option>
+      <option value="6" data-price="6399.00">6</option>
+      <option value="7" data-price="7200.00">7</option>
+      <option value="8" data-price="7899.00">8</option>
+      <option value="9" data-price="8599.00">9</option>
+      <option value="10" data-price="9799.00">10</option>
+    </select>
+    <label>Quantity:</label>
+<input type="number" class="quantity-input" min="1" value="1">
+    <button class="btn add-to-cart"
+  data-name="Nike Air Jordan 1 Green"> Add to Cart</button>
+  </div>
+</article>
+
+<article class="shop-card">
+  <div class="shop-product-images">
+    <img class="product-img" src="images/bape.jpeg" alt="BapeBlack">
+  </div>
+  <div class="shop-product-info">
+    <h3>Bape Star OS M1</h3>
+    <p class="price">R<span class="product-price">4999.00</span></p>
+    <label>Select size:</label>
+    <select class="size-select" aria-label="Select size for Bape">
+      <option value="4" data-price="4999.00">4</option>
+      <option value="5" data-price="5599.00">5</option>
+      <option value="6" data-price="6399.00">6</option>
+      <option value="7" data-price="7200.00">7</option>
+      <option value="8" data-price="7899.00">8</option>
+      <option value="9" data-price="8599.00">9</option>
+      <option value="10" data-price="9799.00">10</option>
+    </select>
+    <label>Quantity:</label>
+<input type="number" class="quantity-input" min="1" value="1">
+    <button class="btn add-to-cart"
+  data-name="BapeBlack"> Add to Cart</button>
+  </div>
+</article>
+
+<article class="shop-card">
+  <div class="shop-product-images">
+    <img class="product-img" src="images/Dunk.jpeg" alt="DunkSB">
+  </div>
+  <div class="shop-product-info">
+    <h3>Nike Dunk SB Green and Brown</h3>
+    <p class="price">R<span class="product-price">4999.00</span></p>
+    <label>Select size:</label>
+    <select class="size-select" aria-label="Select size for Nike Dunk SB Green and Brown">
+      <option value="4" data-price="4999.00">4</option>
+      <option value="5" data-price="5599.00">5</option>
+      <option value="6" data-price="6399.00">6</option>
+      <option value="7" data-price="7200.00">7</option>
+      <option value="8" data-price="7899.00">8</option>
+      <option value="9" data-price="8599.00">9</option>
+      <option value="10" data-price="9799.00">10</option>
+    </select>
+    <label>Quantity:</label>
+<input type="number" class="quantity-input" min="1" value="1">
+    <button class="btn add-to-cart"
+  data-name="Nike Dunk SB Green and Brown"> Add to Cart</button>
+  </div>
+</article>
+</section>
   </main>
-
   <!-- FOOTER -->
   <footer class="site-footer">
     <p>&copy; 2025 Crep Culture. All rights reserved.</p>
   </footer>
 
-  <script>
-      (function(){
+<script>
+
+
+  //Had to use inline js for the burger menu for the shop html page as it clashes with the rest
+    (function(){
     const burger = document.querySelector('.cc-burger');
     const nav = document.getElementById('cc-side-nav');
     const overlay = document.getElementById('cc-overlay');
@@ -594,80 +591,8 @@
     });
   })();
 
-document.querySelectorAll('.product-card').forEach(card => {
-  const images= card.querySelectorAll('.product-images img');
-  let current = 0;
-  let interval;
-
-  card.addEventListener('mouseenter', () => {
-    interval = setInterval(() => {
-      images.forEach((img, i) => {
-        img.style.opacity = i === current ? '1' : '0';
-      });
-      current = (current + 1) % images.length;
-    }, 800); // Change image every 800ms
-  });
-
-  card.addEventListener('mouseleave', () => {
-    clearInterval(interval);
-    current = 0;
-    images.forEach((img, i) => {
-      img.style.opacity = i === 0 ? '1' : '0'; // Reset to first image
-    });
-  });
-});
-//This is for the search 
-function filterProducts() {
-  const input = document.getElementById('search').value.toLowerCase();
-  const products = document.querySelectorAll('.shop-card');
-
-  products.forEach(product => {
-    const name = product.querySelector('h3').textContent.toLowerCase();
-    product.style.display = name.includes(input) ? 'block' : 'none';
-  });
-}
-//This is for the sort button
-function sortProducts() {
-  const sortValue = document.getElementById('sort').value;
-  const grid = document.getElementById('shop-grid');
-  const cards = Array.from(grid.getElementsByClassName('shop-card'));
-
-  let sortedCards;
-
-  if (sortValue === 'name-asc') {
-    sortedCards = cards.sort((a, b) => {
-      const nameA = a.querySelector('h3').textContent.toLowerCase();
-      const nameB = b.querySelector('h3').textContent.toLowerCase();
-      return nameA.localeCompare(nameB);
-    });
-  } else if (sortValue === 'name-desc') {
-    sortedCards = cards.sort((a, b) => {
-      const nameA = a.querySelector('h3').textContent.toLowerCase();
-      const nameB = b.querySelector('h3').textContent.toLowerCase();
-      return nameB.localeCompare(nameA);
-    });
-  } else if (sortValue === 'price-asc') {
-    sortedCards = cards.sort((a, b) => {
-      const priceA = parseFloat(a.querySelector('.price').textContent.replace(/[^\d.,]/g, '').replace(',', '.'));
-      const priceB = parseFloat(b.querySelector('.price').textContent.replace(/[^\d.,]/g, '').replace(',', '.'));
-      return priceA - priceB;
-    });
-  } else if (sortValue === 'price-desc') {
-    sortedCards = cards.sort((a, b) => {
-      const priceA = parseFloat(a.querySelector('.price').textContent.replace(/[^\d.,]/g, '').replace(',', '.'));
-      const priceB = parseFloat(b.querySelector('.price').textContent.replace(/[^\d.,]/g, '').replace(',', '.'));
-      return priceB - priceA;
-    });
-  } else {
-    return; // 'default' selected, do nothing
-  }
-
-  // Clear and re-append sorted cards
-  grid.innerHTML = '';
-  sortedCards.forEach(card => grid.appendChild(card));
-}
-
 </script>
-
+<script src="Javascript/script.js"></script>
+<script src="Javascript/cart.js" defer></script>
 </body>
 </html>
