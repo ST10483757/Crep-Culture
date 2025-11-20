@@ -37,12 +37,21 @@ body {
   color: rgb(255, 255, 255);
   font-size: 1rem;
 }
+
+nav {
+  display: flex;
+  flex-wrap: nowrap;   /* prevent wrapping */
+  gap: 10px;           /* use gap instead of margins */
+}
+
 nav a {
   margin: 0 15px;
   font-weight: 300;
-  font-size: 1rem;
+  font-size: clamp(12px, 2.5vw, 16px); 
   text-decoration: none;
   color: #ffffff;
+  flex-shrink: 1;
+
 }
 nav a.active {
   font-weight: lighter;
