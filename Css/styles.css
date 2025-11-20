@@ -10,32 +10,42 @@ body {
 
 
 /* HEADER for Page1 (Home page)*/
-header {
+
+.index-header {
   position: fixed; /* stays on top of slides */
   top: 0;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   padding: 15px 40px;
   background-color: transparent; /* start transparent */
+  border-bottom: 2px solid white;
   z-index: 1000; /* above slides */
   transition: background-color 0.3s ease;
 }
 
+/* Hidden state when scrolling down */
+.index-header.hide {
+  transform: translateY(-100%);
+}
+
 .logo {
-  font-weight: bold;
-  color: whitesmoke;
-  font-size: 1.5rem;
+  font-weight: bolder;
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
 }
 nav a {
   margin: 0 15px;
+  font-weight: 300;
+  font-size: 1rem;
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
 }
 nav a.active {
-  font-weight: bold;
+  font-weight: lighter;
   border-bottom: 2px solid grey;
 }
 .nav-icons a {
@@ -766,9 +776,72 @@ position: relative;
 @media (max-width: 768px) {
   .logo {
     font-size: 1.2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-bottom: 0.5rem;
   }
 }
+
+.logo h1 {
+  font-size: clamp(20px, 6vw, 36px); /* scales with screen size */
+  margin: 0;
+  text-align: center; /* centers on small screens */
+  white-space: normal; /* allows wrapping if needed */
+}
+
+/* Ensure the logo container adapts */
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* prevents cutoff */
+  text-decoration: none;
+  color: #817e7e; /* brand color */
+}
+.nav {
+  display: flex;
+  justify-content: space-between; /* logo left, icons right */
+  gap: 2rem;
+  align-items: center;            /* vertically centered */
+  padding: 0.5rem 1rem;
+}
+
+.logo h1 {
+  font-size: clamp(20px, 5vw, 32px);
+  margin: 0;
+  margin-right: 10px;
+}
+
+.icons {
+  display: flex;
+  gap: 1rem; /* spacing between hamburger + cart + search */
+}
+
+
+/* Mobile-specific tweaks */
+@media (max-width: 768px) {
+  .logo h1 {
+    font-size: 24px; /* smaller fixed size for mobile */
+  }
+  
+  .nav {
+    flex-direction: row; /* keep logo + icons on one line */
+    
+  }
+
+  .logo {
+    flex: 1; /* logo takes available space */
+  }
+
+  .icons {
+    gap: 0.5rem; /* tighter spacing on mobile */
+  }
+
+  .nav-links {
+    display: none; /* hide links until hamburger is clicked */
+  }
+}
+
+
 
 /* SEARCH & SORT*/
 .shop-filters {
@@ -1459,6 +1532,20 @@ body.header-fixed {
 .about-page {
   background-color: #f9f9f9;
 }
+.main-header {
+  position: fixed; /* stays at top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff; /* or your brand color */
+  transition: transform 0.3s ease; /* smooth hide/show */
+  z-index: 999;
+}
+/* Hidden state */
+.main-header.hide {
+  transform: translateY(-100%); /* slide up out of view */
+}
+
 /* TABLET: 601px to 1024px */
 @media (min-width: 601px) and (max-width: 1024px) {
   .about-hero {
@@ -2059,6 +2146,19 @@ header.fixed h1 {
 }
 /*Fpr the faq page*/
 /* FAQ Page */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* prevents cutoff */
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column; /* stack items vertically */
+  }
+}
+
 .faq-container {
   max-width: 800px;
   margin: 120px auto;

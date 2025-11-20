@@ -15,7 +15,7 @@
 <body>
 
   <!-- HEADER / NAV -->
-  <header>
+  <header class="index-header">
     <div class="logo">Crep Culture</div>
     <nav>
       <a href="index.html" class="active">Home</a>
@@ -26,12 +26,31 @@
     <div class="nav-icons">
       <div class="actions">
         <a href="login.html" class="icon-btn" aria-label="Account">👤</a>
-        <a href="cart.html" class="icon-btn cart-link" aria-label="Cart">
+        <a href= cart-btn class="icon-btn cart-link" aria-label="Cart">
           🛒<span id="cart-count" class="badge">0</span>
         </a>
       </div>
     </div>
   </header>
+  
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  let lastScrollTop = 0;
+  const header = document.querySelector('.index-header');
+
+  window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+      header.classList.add('hide');
+    } else {
+      header.classList.remove('hide');
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
+});
+</script>
 
   <!-- HERO SLIDER -->
 <section class="hero">

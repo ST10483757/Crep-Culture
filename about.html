@@ -15,8 +15,6 @@
     <nav>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop Now</a></li>
-        <li><a href="Contact.html">Contact Us</a></li>
         <li><a href="blog.html">Read More</a></li>
         <li><a href="about.html" class="active">About</a></li>
       </ul>
@@ -67,10 +65,10 @@
   <section class="help-section">
     <h2>Get Help</h2>
     <ul>
-      <li><a href="faqs.html">FAQs</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="track-order.html">Track Order</a></li>
-      <li><a href="returns.html">Returns & Exchanges</a></li>
+      <li><a href="FAQ.html">FAQs</a></li>
+      <li><a href="Contact.html">Contact Us</a></li>
+      <li><a href="#">Track Order</a></li>
+      <li><a href="#">Returns & Exchanges</a></li>
     </ul>
   </section>
   <div class="floating-testimonials">
@@ -144,6 +142,25 @@ document.addEventListener('DOMContentLoaded', () => {
       current = (current - 1 + slides.length) % slides.length;
       showSlide(current); // swipe right
     }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  let lastScrollTop = 0;
+  const header = document.querySelector('.main-header');
+
+  window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+      // scrolling down
+      header.classList.add('hide');
+    } else {
+      // scrolling up
+      header.classList.remove('hide');
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // avoid negative values
   });
 });
 </script>

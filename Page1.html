@@ -15,7 +15,7 @@
 <body>
 
   <!-- HEADER / NAV -->
-  <header>
+  <header class="index-header" >
     <div class="logo">Crep Culture</div>
     <nav>
       <a href="index.html" class="active">Home</a>
@@ -32,6 +32,27 @@
       </div>
     </div>
   </header>
+  <style>
+    .main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;       /* default transparent */
+  transition: transform 0.3s ease, background 0.3s ease;
+  z-index: 999;
+}
+
+/* White background only when hovered */
+.main-header:hover {
+  background: #fff;
+}
+
+/* Hidden state on scroll down */
+.main-header.hide {
+  transform: translateY(-100%);
+}
+  </style>
 
   <!-- HERO SLIDER -->
 <section class="hero">
@@ -115,6 +136,7 @@
       <div class="grid-item"><img src="images/cool.jpeg" alt="Nike release"></div>
       <div class="grid-item"><img src="images/sneakerhead.jpeg" alt="Streetwear"></div>
       <div class="grid-item"><img src="images/Adidas Samba.jpeg" alt="Adidas Samba"></div>
+      <div class="grid-item"><img src="images/TravisScottNew.jpeg" alt="StreetwearFashion"></div>
 
       <!-- Videos -->
       <div class="grid-item">
@@ -208,6 +230,7 @@
   <!-- Scripts -->
   <script src="Javascript/glightbox.min.js"></script>
   <script src="Javascript/slider.js" defer></script>
-    
+  
+ 
 </body>
 </html>
